@@ -9,7 +9,7 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
-        <NavigationView x:Name="NavView"
+        <NavigationView x:Name="NavView"                        
                          Loaded="NavView_Loaded"
                          ItemInvoked="NavView_ItemInvoked"
                          BackRequested="NavView_BackRequested">
@@ -27,12 +27,20 @@
             <NavigationView.AutoSuggestBox>
                 <!-- See AutoSuggestBox documentation for
                  more info about how to implement search. -->
-                <AutoSuggestBox x:Name="NavViewSearchBox" QueryIcon="Find"/>
+                <AutoSuggestBox x:Name="NavViewSearchBox" 
+                                QueryIcon="Find"
+                                PlaceholderText="请输入城市名"
+                                QuerySubmitted="NavViewSearchBox_QuerySubmitted"
+                                TextChanged="NavViewSearchBox_TextChanged"
+                                SuggestionChosen="NavViewSearchBox_SuggestionChosen"/>
             </NavigationView.AutoSuggestBox>
 
             <ScrollViewer>
+                <StackPanel>
                 <Frame x:Name="ContentFrame" Padding="12,0,12,24" IsTabStop="True"
                    NavigationFailed="ContentFrame_NavigationFailed"/>
+                    <TextBlock Name="mytext" FontSize="100" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                </StackPanel>
             </ScrollViewer>
         </NavigationView>
 

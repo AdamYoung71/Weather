@@ -9,6 +9,10 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
-
+        <StackPanel>
+        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center"
+                   FontSize="100" Name="curweather" />
+            <Button Name="myButton" Click="MyButton_Click" Content="Click"/>
+        </StackPanel>
     </Grid>
 </Page>
