@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LLQ;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,7 +9,8 @@ namespace Weather.Pages
 {
     public class Parameters
     {
-        static string cityName;
+        public static string cityName = "北京";
+        public static Boolean signal = false;
         public static void getCity(string s)
         {
             cityName = s;
@@ -18,11 +20,14 @@ namespace Weather.Pages
         {
             return cityName;
         }
-    }
 
-    //public class CityName
-    //{
-       //public static string Name;
-    //}
-   
+        public static void setSig()
+        {
+            signal = true;
+                 
+        }
+    }
+    
+    
+    
 }

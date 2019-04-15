@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using System.Security.Cryptography;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.System;
@@ -13,7 +14,9 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Media.Animation;
+using Windows.UI.Xaml.Media.Imaging;
 using Windows.UI.Xaml.Navigation;
+
 
 // https://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x804 上介绍了“空白页”项模板
 
@@ -27,6 +30,7 @@ namespace Weather
         public MainPage()
         {
             this.InitializeComponent();
+            this.NavigationCacheMode = NavigationCacheMode.Enabled;
         }
 
 
@@ -46,21 +50,22 @@ namespace Weather
 
         private void NavView_Loaded(object sender, RoutedEventArgs e)
         {
+            
             ContentFrame.Navigated += On_Navigated;
 
-            // NavView doesn't load any page by default, so load home page.
+            // 默认情况下不加载页面，故设置为加载Homepage
             NavView.SelectedItem = NavView.MenuItems[0];
             // If navigation occurs on SelectionChanged, this isn't needed.
             // Because we use ItemInvoked to navigate, we need to call Navigate
             // here to load the home page.
             NavView_Navigate("home", new EntranceNavigationTransitionInfo());
 
-            // Add keyboard accelerators for backwards navigation.
+            // 为键盘回退添加keyboard accelerator
             var goBack = new KeyboardAccelerator { Key = VirtualKey.GoBack };
             goBack.Invoked += BackInvoked;
             this.KeyboardAccelerators.Add(goBack);
 
-            // ALT routes here
+            // ALT + Left回退
             var altLeft = new KeyboardAccelerator
             {
                 Key = VirtualKey.Left,
@@ -112,11 +117,11 @@ namespace Weather
                 var item = _pages.FirstOrDefault(p => p.Tag.Equals(navItemTag));
                 _page = item.Page;
             }
-            // Get the page type before navigation so you can prevent duplicate
+            // Get the page type before navigation so you can prevent duplicate在导航前获取页面类型，避免复制
             // entries in the backstack.
             var preNavPageType = ContentFrame.CurrentSourcePageType;
 
-            // Only navigate if the selected page isn't currently loaded.
+            // Only navigate if the selected page isn't currently loaded.只在被选择的页面没有加载时导航
             if (!(_page is null) && !Type.Equals(preNavPageType, _page))
             {
                 ContentFrame.Navigate(_page, null, transitionInfo);
@@ -188,14 +193,38 @@ namespace Weather
             sender.Text = args.SelectedItem.ToString();
         }
 
-        private async void NavViewSearchBox_QuerySubmitted(AutoSuggestBox sender, AutoSuggestBoxQuerySubmittedEventArgs args)
+
+        //声明一种通知事件
+        public class getMyCity
+        {
+            public string cityName { get; set; }
+        }
+
+        public static class Test
+        {
+           
+        }
+       
+        
+
+        private void NavViewSearchBox_QuerySubmitted(AutoSuggestBox sender, AutoSuggestBoxQuerySubmittedEventArgs args)
         {
             try
             {
                 string cityName = args.QueryText;
-                Weather.Pages.Parameters.getCity(cityName);
+                Pages.Parameters.cityName = cityName;
+                Pages.Parameters.signal = true;
+
+                ContentFrame.Navigate(typeof(HomePage),cityName);//折腾我好几天！
+
+
+                //尝试：更换图片背景
+                ImageBrush imageBrush = new ImageBrush();
+                imageBrush.ImageSource = new BitmapImage(new Uri("ms-appx:///Assets/backgrouds/test1.jpg", UriKind.Absolute));
+
                
-                var myWeather = await MainAPI.MainAPI.GetWrather(cityName);     //实例化主要天气API
+
+                /*var myWeather = await MainAPI.MainAPI.GetWrather(cityName);     //实例化主要天气API
                 var mySuggestion = await LifeSuggestionAPI.LifeSuggestionAPI.GetSuggestion(cityName);//实例化生活指数
                 var myLocation = await CityToLocation.CityToLocation.GetLocation(cityName);     //使用高德API将城市名转换为经纬度。
                 string[] Locations = myLocation.geocodes[0].location.Split(",");        //将用逗号隔开的经纬度分割分别存入。
@@ -203,7 +232,8 @@ namespace Weather
                 double Lon = Convert.ToDouble(Locations[1]);
                 var myCurrentWeather = await ProCurrentWeather.ProCurrentWeather.GetProCurrentWeather(Lon, Lat);//实例化高级当前天气API
                 var myForecast = await ProForecast.ProForecast.GetProForecast(Lon, Lat);//实例化高级天气预报API
-
+                */
+               
 
 
 
@@ -212,7 +242,7 @@ namespace Weather
 
             catch
             {
-                mytext.Text = "错误！";
+                
             }
         }
 

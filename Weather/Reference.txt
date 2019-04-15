@@ -1,0 +1,18 @@
+﻿System.Runtime.Serialization.SerializationException
+  HResult=0x8013150C
+  Message=There was an error deserializing the object of type FiveDaysAPI.Root. DateTime content '2019-04-14' does not start with '\/Date(' and end with ')\/' as required for JSON.
+  Source=System.Private.DataContractSerialization
+  StackTrace:
+   在 System.Runtime.Serialization.XmlObjectSerializer.ReadObjectHandleExceptions(XmlReaderDelegator reader, Boolean verifyObjectName, DataContractResolver dataContractResolver)
+   在 System.Runtime.Serialization.Json.DataContractJsonSerializerImpl.ReadObject(XmlDictionaryReader reader)
+   在 System.Runtime.Serialization.Json.DataContractJsonSerializerImpl.ReadObject(Stream stream)
+   在 System.Runtime.Serialization.Json.DataContractJsonSerializer.ReadObject(Stream stream)
+   在 FiveDaysAPI.FiveDaysAPI.<getFiveDaysAPI>d__0.MoveNext() 在 C:\Users\Adam Young\source\repos\Weather\Weather\APIs\FiveDaysAPI.cs 中: 第 32 行
+   在 System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   在 System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   在 System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   在 System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   在 Weather.HomePage.<getCity>d__2.MoveNext() 在 C:\Users\Adam Young\source\repos\Weather\Weather\Pages\HomePage.xaml.cs 中: 第 58 行
+
+内部异常 1:
+FormatException: DateTime content '2019-04-14' does not start with '\/Date(' and end with ')\/' as required for JSON.

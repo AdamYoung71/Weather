@@ -6,9 +6,18 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    Background="Transparent">
 
     <Grid>
-
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <ScrollViewer>
+            <StackPanel >
+                <TextBlock FontSize="40" Margin="64,64,64,0" Foreground="White">Provider</TextBlock>
+                <Image Name="providerIcon" Source="/Assets/logo-red-text-white-2x.png" Height="100" HorizontalAlignment="Left"/>
+            </StackPanel>
+        </ScrollViewer>
     </Grid>
 </Page>

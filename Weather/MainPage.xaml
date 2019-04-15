@@ -6,9 +6,18 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    Background="{StaticResource SystemControlChromeMediumAcrylicWindowMediumBrush}">
 
     <Grid>
+        <Grid.Background >
+        <LinearGradientBrush StartPoint="1,0">
+            <GradientStop Color="#7F7FD5" Offset="1"/>
+            <GradientStop Color="#86A8E7" Offset="0.5"/>
+            <GradientStop Color="#91EAE4" Offset="0"/>
+
+        </LinearGradientBrush>
+        </Grid.Background>
+
         <NavigationView x:Name="NavView"                        
                          Loaded="NavView_Loaded"
                          ItemInvoked="NavView_ItemInvoked"
@@ -37,9 +46,8 @@
 
             <ScrollViewer>
                 <StackPanel>
-                <Frame x:Name="ContentFrame" Padding="12,0,12,24" IsTabStop="True"
-                   NavigationFailed="ContentFrame_NavigationFailed"/>
-                    <TextBlock Name="mytext" FontSize="100" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    <Frame x:Name="ContentFrame" Padding="12,0,12,24" IsTabStop="True"
+                            NavigationFailed="ContentFrame_NavigationFailed"/>
                 </StackPanel>
             </ScrollViewer>
         </NavigationView>
@@ -53,7 +61,7 @@
                     </VisualState.StateTriggers>
                     <VisualState.Setters>
                         <!-- Remove the next 3 lines for left-only navigation. -->
-                        <Setter Target="NavView.PaneDisplayMode" Value="Top"/>
+                        <Setter Target="NavView.PaneDisplayMode" Value="top"/>
                         <Setter Target="NavViewSearchBox.Width" Value="200"/>
                         <Setter Target="MainPagesHeader.Visibility" Value="Collapsed"/>
                         <!-- Leave the next line for left-only navigation. -->

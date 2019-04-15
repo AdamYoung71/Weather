@@ -116,7 +116,10 @@
     <RestoreProjectStyle>PackageReference</RestoreProjectStyle>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="APIs.cs" />
+    <Compile Include="APIs\AirQuality.cs" />
     <Compile Include="APIs\CityToLocation.cs" />
+    <Compile Include="APIs\Forcast.cs" />
     <Compile Include="APIs\LifeSuggestionAPI.cs" />
     <Compile Include="APIs\MainAPI.cs" />
     <Compile Include="APIs\ProCurrentWeather.cs" />
@@ -127,6 +130,7 @@
     <Compile Include="Pages\Collection.xaml.cs">
       <DependentUpon>Collection.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\Events.cs" />
     <Compile Include="Pages\HomePage.xaml.cs">
       <DependentUpon>HomePage.xaml</DependentUpon>
     </Compile>
@@ -143,17 +147,142 @@
     <AppxManifest Include="Package.appxmanifest">
       <SubType>Designer</SubType>
     </AppxManifest>
+    <None Include="Assets\Icons\white\.DS_Store" />
     <None Include="Weather_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\backgrounds\test1.jpg" />
+    <Content Include="Assets\backgrounds\test2.jpg" />
+    <Content Include="Assets\Icons\white\0%401x.png" />
+    <Content Include="Assets\Icons\white\0%402x.png" />
+    <Content Include="Assets\Icons\white\1%401x.png" />
+    <Content Include="Assets\Icons\white\1%402x.png" />
+    <Content Include="Assets\Icons\white\10%401x.png" />
+    <Content Include="Assets\Icons\white\10%402x.png" />
+    <Content Include="Assets\Icons\white\11%401x.png" />
+    <Content Include="Assets\Icons\white\11%402x.png" />
+    <Content Include="Assets\Icons\white\12%401x.png" />
+    <Content Include="Assets\Icons\white\12%402x.png" />
+    <Content Include="Assets\Icons\white\13%401x.png" />
+    <Content Include="Assets\Icons\white\13%402x.png" />
+    <Content Include="Assets\Icons\white\14%401x.png" />
+    <Content Include="Assets\Icons\white\14%402x.png" />
+    <Content Include="Assets\Icons\white\15%401x.png" />
+    <Content Include="Assets\Icons\white\15%402x.png" />
+    <Content Include="Assets\Icons\white\16%401x.png" />
+    <Content Include="Assets\Icons\white\16%402x.png" />
+    <Content Include="Assets\Icons\white\17%401x.png" />
+    <Content Include="Assets\Icons\white\17%402x.png" />
+    <Content Include="Assets\Icons\white\18%401x.png" />
+    <Content Include="Assets\Icons\white\18%402x.png" />
+    <Content Include="Assets\Icons\white\19%401x.png" />
+    <Content Include="Assets\Icons\white\19%402x.png" />
+    <Content Include="Assets\Icons\white\2%401x.png" />
+    <Content Include="Assets\Icons\white\2%402x.png" />
+    <Content Include="Assets\Icons\white\20%401x.png" />
+    <Content Include="Assets\Icons\white\20%402x.png" />
+    <Content Include="Assets\Icons\white\21%401x.png" />
+    <Content Include="Assets\Icons\white\21%402x.png" />
+    <Content Include="Assets\Icons\white\22%401x.png" />
+    <Content Include="Assets\Icons\white\22%402x.png" />
+    <Content Include="Assets\Icons\white\23%401x.png" />
+    <Content Include="Assets\Icons\white\23%402x.png" />
+    <Content Include="Assets\Icons\white\24%401x.png" />
+    <Content Include="Assets\Icons\white\24%402x.png" />
+    <Content Include="Assets\Icons\white\25%401x.png" />
+    <Content Include="Assets\Icons\white\25%402x.png" />
+    <Content Include="Assets\Icons\white\26%401x.png" />
+    <Content Include="Assets\Icons\white\26%402x.png" />
+    <Content Include="Assets\Icons\white\27%401x.png" />
+    <Content Include="Assets\Icons\white\27%402x.png" />
+    <Content Include="Assets\Icons\white\28%401x.png" />
+    <Content Include="Assets\Icons\white\28%402x.png" />
+    <Content Include="Assets\Icons\white\29%401x.png" />
+    <Content Include="Assets\Icons\white\29%402x.png" />
+    <Content Include="Assets\Icons\white\3%401x.png" />
+    <Content Include="Assets\Icons\white\3%402x.png" />
+    <Content Include="Assets\Icons\white\30%401x.png" />
+    <Content Include="Assets\Icons\white\30%402x.png" />
+    <Content Include="Assets\Icons\white\31%401x.png" />
+    <Content Include="Assets\Icons\white\31%402x.png" />
+    <Content Include="Assets\Icons\white\32%401x.png" />
+    <Content Include="Assets\Icons\white\32%402x.png" />
+    <Content Include="Assets\Icons\white\33%401x.png" />
+    <Content Include="Assets\Icons\white\33%402x.png" />
+    <Content Include="Assets\Icons\white\34%401x.png" />
+    <Content Include="Assets\Icons\white\34%402x.png" />
+    <Content Include="Assets\Icons\white\35%401x.png" />
+    <Content Include="Assets\Icons\white\35%402x.png" />
+    <Content Include="Assets\Icons\white\36%401x.png" />
+    <Content Include="Assets\Icons\white\36%402x.png" />
+    <Content Include="Assets\Icons\white\37%401x.png" />
+    <Content Include="Assets\Icons\white\37%402x.png" />
+    <Content Include="Assets\Icons\white\38%401x.png" />
+    <Content Include="Assets\Icons\white\38%402x.png" />
+    <Content Include="Assets\Icons\white\4%401x.png" />
+    <Content Include="Assets\Icons\white\4%402x.png" />
+    <Content Include="Assets\Icons\white\5%401x.png" />
+    <Content Include="Assets\Icons\white\5%402x.png" />
+    <Content Include="Assets\Icons\white\6%401x.png" />
+    <Content Include="Assets\Icons\white\6%402x.png" />
+    <Content Include="Assets\Icons\white\7%401x.png" />
+    <Content Include="Assets\Icons\white\7%402x.png" />
+    <Content Include="Assets\Icons\white\8%401x.png" />
+    <Content Include="Assets\Icons\white\8%402x.png" />
+    <Content Include="Assets\Icons\white\9%401x.png" />
+    <Content Include="Assets\Icons\white\9%402x.png" />
+    <Content Include="Assets\Icons\white\99%401x.png" />
+    <Content Include="Assets\Icons\white\99%402x.png" />
+    <Content Include="Assets\LargeTile.scale-100.png" />
+    <Content Include="Assets\LargeTile.scale-125.png" />
+    <Content Include="Assets\LargeTile.scale-150.png" />
+    <Content Include="Assets\LargeTile.scale-200.png" />
+    <Content Include="Assets\LargeTile.scale-400.png" />
+    <Content Include="Assets\logo-red-text-white-2x.png" />
+    <Content Include="Assets\partly-cloudy-day-512.png" />
+    <Content Include="Assets\SmallTile.scale-100.png" />
+    <Content Include="Assets\SmallTile.scale-125.png" />
+    <Content Include="Assets\SmallTile.scale-150.png" />
+    <Content Include="Assets\SmallTile.scale-200.png" />
+    <Content Include="Assets\SmallTile.scale-400.png" />
+    <Content Include="Assets\SplashScreen.scale-100.png" />
+    <Content Include="Assets\SplashScreen.scale-125.png" />
+    <Content Include="Assets\SplashScreen.scale-150.png" />
+    <Content Include="Assets\SplashScreen.scale-400.png" />
+    <Content Include="Assets\Square150x150Logo.scale-100.png" />
+    <Content Include="Assets\Square150x150Logo.scale-125.png" />
+    <Content Include="Assets\Square150x150Logo.scale-150.png" />
+    <Content Include="Assets\Square150x150Logo.scale-400.png" />
+    <Content Include="Assets\Square44x44Logo.altform-unplated_targetsize-16.png" />
+    <Content Include="Assets\Square44x44Logo.altform-unplated_targetsize-256.png" />
+    <Content Include="Assets\Square44x44Logo.altform-unplated_targetsize-32.png" />
+    <Content Include="Assets\Square44x44Logo.altform-unplated_targetsize-48.png" />
+    <Content Include="Assets\Square44x44Logo.scale-100.png" />
+    <Content Include="Assets\Square44x44Logo.scale-125.png" />
+    <Content Include="Assets\Square44x44Logo.scale-150.png" />
+    <Content Include="Assets\Square44x44Logo.scale-400.png" />
+    <Content Include="Assets\Square44x44Logo.targetsize-16.png" />
+    <Content Include="Assets\Square44x44Logo.targetsize-24.png" />
+    <Content Include="Assets\Square44x44Logo.targetsize-256.png" />
+    <Content Include="Assets\Square44x44Logo.targetsize-32.png" />
+    <Content Include="Assets\Square44x44Logo.targetsize-48.png" />
+    <Content Include="Assets\StoreLogo.scale-100.png" />
+    <Content Include="Assets\StoreLogo.scale-125.png" />
+    <Content Include="Assets\StoreLogo.scale-150.png" />
+    <Content Include="Assets\StoreLogo.scale-200.png" />
+    <Content Include="Assets\StoreLogo.scale-400.png" />
+    <Content Include="Assets\Wide310x150Logo.scale-100.png" />
+    <Content Include="Assets\Wide310x150Logo.scale-125.png" />
+    <Content Include="Assets\Wide310x150Logo.scale-150.png" />
+    <Content Include="Assets\Wide310x150Logo.scale-400.png" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
     <Content Include="Assets\SplashScreen.scale-200.png" />
     <Content Include="Assets\Square150x150Logo.scale-200.png" />
     <Content Include="Assets\Square44x44Logo.scale-200.png" />
     <Content Include="Assets\Square44x44Logo.targetsize-24_altform-unplated.png" />
-    <Content Include="Assets\StoreLogo.png" />
     <Content Include="Assets\Wide310x150Logo.scale-200.png" />
+    <Content Include="Reference.txt" />
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
@@ -178,8 +307,14 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="LLQNotifier">
+      <Version>0.7.0</Version>
+    </PackageReference>
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
-      <Version>6.2.3</Version>
+      <Version>6.2.8</Version>
+    </PackageReference>
+    <PackageReference Include="Newtonsoft.Json">
+      <Version>12.0.1</Version>
     </PackageReference>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">

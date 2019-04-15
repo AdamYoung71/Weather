@@ -8,7 +8,7 @@ using System.Runtime.Serialization.Json;
 using System.Runtime.Serialization;
 using System.IO;
 using Windows.UI.Xaml.Controls;
-
+/*
 namespace LifeSuggestionAPI//六项生活指数API
 
 {
@@ -19,7 +19,7 @@ namespace LifeSuggestionAPI//六项生活指数API
             var location_cd = city;
             var http = new HttpClient();
             //var response = await http.GetAsync("https://api.seniverse.com/v3/life/suggestion.json?key=9b7few3mmyrhzfp1&location=shanghai&language=zh-Hans");
-            var response = await http.GetAsync("https://api.seniverse.com/v3/life/suggestion.json?key=9b7few3mmyrhzfp1&location=" + location_cd + "&language=zh-Hans");
+            var response = await http.GetAsync("https://api.seniverse.com/v3/life/suggestion.json?key=SrcvbANXIm08Wx519&location=" + location_cd + "&language=zh-Hans");
             var result = await response.Content.ReadAsStringAsync();
             var serializer = new DataContractJsonSerializer(typeof(Root));
 
@@ -191,3 +191,4 @@ namespace LifeSuggestionAPI//六项生活指数API
     }
 
 }
+*/

@@ -25,7 +25,7 @@ namespace CityToLocation
 
             var ms = new MemoryStream(Encoding.UTF8.GetBytes(result));
             var data = (Root)serializer.ReadObject(ms);
-
+            string[] lonAndlat = data.geocodes[0].location.Split(";");
             return data;
         }
 
