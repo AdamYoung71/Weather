@@ -65,17 +65,19 @@ namespace Weather
                 var myCurrentWeather = await ProCurrentWeather.ProCurrentWeather.GetProCurrentWeather(Lon, Lat);//实例化高级当前天气API
                 var myForcast = await ProForecast.ProForecast.GetProForecast(Lon, Lat);
                 var myAir = await AirQulity.AirQuality.getAir(cityName);
+               //var mySun = await SunRise.SunRise.getSunRise(cityName);
 
 
-
-                curTempText.Text = myWeather.results[0].now.temperature + "℃";
+                curTempText.Text = myWeather.results[0].now.temperature + "°C";
                 cityNameText.Text = cityName;
                 //添加对应天气的图片
                 tomoText.Text = "明日天气：" + myForcast.results[0].data[0].temperature + " " + myForcast.results[0].data[0].text;
                 var weatherCode = "/Assets/Icons/white/" + Convert.ToString(myWeather.results[0].now.code) + "@2x.png";
                 mainIcon.Source = new BitmapImage(new Uri(mainIcon.BaseUri, weatherCode));
 
-
+                string[] lastUpdate = myWeather.results[0].last_update.Split("T");
+                lastUpdatedText.Text = "最后更新：" + lastUpdate[1].Substring(0,5);
+                mainDisc.Text = myWeather.results[0].now.text;
 
             }
             catch
@@ -83,7 +85,7 @@ namespace Weather
                 var weatherCode = "/Assets/Icons/white/99@2x.png";
                 mainIcon.Source = new BitmapImage(new Uri(mainIcon.BaseUri, weatherCode));
                 cityNameText.Text = "Error";
-                curTempText.Text = "--℃";
+                curTempText.Text = "--°C";
                 tomoText.Text = " ";
               
             }

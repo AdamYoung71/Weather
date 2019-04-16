@@ -21,17 +21,21 @@
         <NavigationView x:Name="NavView"                        
                          Loaded="NavView_Loaded"
                          ItemInvoked="NavView_ItemInvoked"
-                         BackRequested="NavView_BackRequested">
+                         BackRequested="NavView_BackRequested"
+                        PaneDisplayMode="Top">
             <NavigationView.MenuItems>
                 <NavigationViewItem Tag="home" Icon="Home" Content="主页"/>
                 <NavigationViewItemSeparator/>
-                <NavigationViewItemHeader x:Name="MainPagesHeader"
-                                           Content="Main pages"/>
+                
                 <NavigationViewItem Tag="Collection" Content="Collection" Icon="OutlineStar">
 
                 </NavigationViewItem>
 
             </NavigationView.MenuItems>
+            <NavigationView.PaneFooter>
+                <NavigationViewItem Icon="Refresh" Content="刷新" Tapped="NavigationViewItem_Tapped"/>
+                
+            </NavigationView.PaneFooter>
 
             <NavigationView.AutoSuggestBox>
                 <!-- See AutoSuggestBox documentation for
@@ -41,13 +45,16 @@
                                 PlaceholderText="请输入城市名"
                                 QuerySubmitted="NavViewSearchBox_QuerySubmitted"
                                 TextChanged="NavViewSearchBox_TextChanged"
-                                SuggestionChosen="NavViewSearchBox_SuggestionChosen"/>
+                                SuggestionChosen="NavViewSearchBox_SuggestionChosen"
+                                MinWidth="150"/>
             </NavigationView.AutoSuggestBox>
 
             <ScrollViewer>
                 <StackPanel>
                     <Frame x:Name="ContentFrame" Padding="12,0,12,24" IsTabStop="True"
-                            NavigationFailed="ContentFrame_NavigationFailed"/>
+                            NavigationFailed="ContentFrame_NavigationFailed">
+                        
+                    </Frame>
                 </StackPanel>
             </ScrollViewer>
         </NavigationView>

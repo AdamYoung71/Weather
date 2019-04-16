@@ -124,6 +124,7 @@
     <Compile Include="APIs\MainAPI.cs" />
     <Compile Include="APIs\ProCurrentWeather.cs" />
     <Compile Include="APIs\ProForecast.cs" />
+    <Compile Include="APIs\SunRise.cs" />
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>

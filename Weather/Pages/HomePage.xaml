@@ -9,32 +9,55 @@
     mc:Ignorable="d"
     Background="Transparent"
     >
-    
-    <Grid x:Name="homepageGrid">
-        
-        <Grid.RowDefinitions>
-            <RowDefinition Height="3*"/>
-            <RowDefinition Height="3*"/>
-            <RowDefinition Height="2*"/>
-        </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="2*"/>
-            <ColumnDefinition Width="7*"/>
-            <ColumnDefinition Width="2*"/>
-        </Grid.ColumnDefinitions>
-        <StackPanel Grid.Column="1">
-            <RelativePanel >
-                <TextBlock Name="cityNameText" FontSize="20" Foreground="White" Width="100" Height="50" Text="北京市" RelativePanel.AlignHorizontalCenterWithPanel="True"/>
-                <TextBlock Name="curTempText" 
+    <Pivot Margin="24">
+        <PivotItem Header="Today">
+            <Grid x:Name="homepageGrid">
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="3*"/>
+                    <RowDefinition Height="3*"/>
+                    <RowDefinition Height="2*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition Width="7*"/>
+                    <ColumnDefinition Width="2*"/>
+                </Grid.ColumnDefinitions>
+                <StackPanel Grid.Column="1">
+                    <RelativePanel Height="200">
+                        <TextBlock Name="cityNameText" 
+                                   FontSize="20" 
+                                   Foreground="White" 
+                                   Width="100" 
+                                   Height="50" 
+                                   Text="北京市" 
+                                   RelativePanel.AlignHorizontalCenterWithPanel="True" 
+                                   Margin="15,0,0,0"/>
+                        <TextBlock Name="curTempText" 
                            FontSize="80"
                            Foreground="White"
                            Width="180"
-                           Text="16℃"
+                           Text="16°C"
                            RelativePanel.AlignHorizontalCenterWith="cityNameText"/>
 
-                <Image Name="mainIcon" Height="60"  RelativePanel.LeftOf="curTempText" Margin="0,28,10,0" Source="/Assets/Icons/white/0@2x.png"/>
-                <TextBlock Name="tomoText" Foreground="White" RelativePanel.AlignBottomWith="cityNameText" Text="tomorrow" FontSize='20'/>
-            </RelativePanel>
-        </StackPanel>
-    </Grid>
+                        <Image Name="mainIcon" Height="60"  RelativePanel.LeftOf="curTempText" Margin="0,28,10,0" Source="/Assets/Icons/white/0@2x.png"/>
+                        <TextBlock Name="mainDisc"  Text="Text" FontSize="30" RelativePanel.Below="curTempText" RelativePanel.AlignHorizontalCenterWithPanel="True" Foreground="White" Margin="-20,-10,0,0"/>
+                        <TextBlock Name="lastUpdatedText" 
+                                   FontSize="12" 
+                                   FontWeight="Bold" 
+                                   Foreground="White" 
+                                   Text="最后更新：" 
+                                   Height="20"
+                              RelativePanel.Below="mainDisc"
+                                   RelativePanel.AlignHorizontalCenterWithPanel="True"
+                                   Margin="0,10,50,-10"/>
+
+                    </RelativePanel>
+                </StackPanel>
+            </Grid>
+        </PivotItem>
+        <PivotItem Header="Forcast">
+            <TextBlock Name="tomoText" Foreground="White" Text="tomorrow" FontSize='20'/>
+        </PivotItem>
+    </Pivot>
 </Page>
