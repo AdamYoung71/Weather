@@ -5,9 +5,14 @@
     xmlns:local="using:Weather"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:pages="using:Weather.Pages"
     mc:Ignorable="d"
+ 
     Background="{StaticResource SystemControlChromeMediumAcrylicWindowMediumBrush}">
 
+
+    
+    
     <Grid>
         <Grid.Background >
         <LinearGradientBrush StartPoint="1,0">
@@ -22,7 +27,7 @@
                          Loaded="NavView_Loaded"
                          ItemInvoked="NavView_ItemInvoked"
                          BackRequested="NavView_BackRequested"
-                        PaneDisplayMode="Top">
+                         PaneDisplayMode="Top">
             <NavigationView.MenuItems>
                 <NavigationViewItem Tag="home" Icon="Home" Content="主页"/>
                 <NavigationViewItemSeparator/>

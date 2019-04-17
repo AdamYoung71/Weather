@@ -1,18 +1,290 @@
-﻿System.Runtime.Serialization.SerializationException
-  HResult=0x8013150C
-  Message=There was an error deserializing the object of type FiveDaysAPI.Root. DateTime content '2019-04-14' does not start with '\/Date(' and end with ')\/' as required for JSON.
-  Source=System.Private.DataContractSerialization
-  StackTrace:
-   在 System.Runtime.Serialization.XmlObjectSerializer.ReadObjectHandleExceptions(XmlReaderDelegator reader, Boolean verifyObjectName, DataContractResolver dataContractResolver)
-   在 System.Runtime.Serialization.Json.DataContractJsonSerializerImpl.ReadObject(XmlDictionaryReader reader)
-   在 System.Runtime.Serialization.Json.DataContractJsonSerializerImpl.ReadObject(Stream stream)
-   在 System.Runtime.Serialization.Json.DataContractJsonSerializer.ReadObject(Stream stream)
-   在 FiveDaysAPI.FiveDaysAPI.<getFiveDaysAPI>d__0.MoveNext() 在 C:\Users\Adam Young\source\repos\Weather\Weather\APIs\FiveDaysAPI.cs 中: 第 32 行
-   在 System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
-   在 System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
-   在 System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
-   在 System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
-   在 Weather.HomePage.<getCity>d__2.MoveNext() 在 C:\Users\Adam Young\source\repos\Weather\Weather\Pages\HomePage.xaml.cs 中: 第 58 行
+﻿FormatException: DateTime content '2019-04-14' does not start with '\/Date(' and end with ')\/' as required for JSON.
 
-内部异常 1:
-FormatException: DateTime content '2019-04-14' does not start with '\/Date(' and end with ')\/' as required for JSON.
+1. MainAPI
+{
+  "results": [{
+  "location": {
+      "id": "C23NB62W20TF",
+      "name": "西雅图",
+      "country": "US",
+      "timezone": "America/Los_Angeles",
+      "timezone_offset": "-07:00"
+  },
+  "now": {
+      "text": "多云", //天气现象文字
+      "code": "4", //天气现象代码
+      "temperature": "14", //温度，单位为c摄氏度或f华氏度
+      "feels_like": "14", //体感温度，单位为c摄氏度或f华氏度
+      "pressure": "1018", //气压，单位为mb百帕或in英寸
+      "humidity": "76", //相对湿度，0~100，单位为百分比
+      "visibility": "16.09", //能见度，单位为km公里或mi英里
+      "wind_direction": "西北", //风向文字
+      "wind_direction_degree": "340", //风向角度，范围0~360，0为正北，90为正东，180为正南，270为正西
+      "wind_speed": "8.05", //风速，单位为km/h公里每小时或mph英里每小时
+      "wind_scale": "2", //风力等级，请参考：http://baike.baidu.com/view/465076.htm
+      "clouds": "90", //云量，单位%，范围0~100，天空被云覆盖的百分比 #目前不支持中国城市#
+      "dew_point": "-12" //露点温度，请参考：http://baike.baidu.com/view/118348.htm #目前不支持中国城市#
+  },
+  "last_update": "2015-09-25T22:45:00-07:00" //数据更新时间（该城市的本地时间）
+  }]
+}
+
+2. Forcast
+{
+  "results": [
+    {
+      "location": {
+        "id": "WX4FBXXFKE4F",
+        "name": "北京",
+        "country": "CN",
+        "path": "北京,北京",
+        "timezone": "Asia/Shanghai",
+        "timezone_offset": "+08:00"
+      },
+      "data": [
+        {
+          "time": "2017-05-07T20:00:00+08:00", //预报时刻
+          "code": "9", //天气现象代码
+          "temperature": "24.0", //温度，单位为c摄氏度或f华氏度
+          "max": "25.0", //上一预报时刻到该时刻之间的最高温度，单位为c摄氏度或f华氏度
+          "min": "24.0", //上一预报时刻到该时刻之间的最低温度，单位为c摄氏度或f华氏度
+          "humidity": "34",  //相对湿度，0~100，单位为百分比
+          "precip": "0.0",   //上一预报时刻到该时刻之间的总降水量，单位mm
+          "wind_speed": "13.68",  //风速，单位为km/h公里每小时或mph英里每小时
+          "wind_scale": "3",      //风力等级
+          "wind_direction_degree": "180",  //风向角
+          "wind_direction": "S",  //风向
+          "clouds": "86.5",       //云量，单位%，范围0~100，天空被云覆盖的百分比
+          "feels_like": "23.34",  //体感温度
+          "text": "阴" //天气现象文字
+        },
+        .... // 省略
+      ],
+      "last_update": "2017-05-07T17:29:44+08:00"
+    }
+  ]
+}
+
+3. AirQuality
+{
+  "results": [{
+    "location": {
+      "id": "WX4FBXXFKE4F",
+      "name": "北京",
+      "country": "CN",
+      "path": "北京,北京,中国",
+      "timezone": "Asia/Shanghai",
+      "timezone_offset": "+08:00"
+    },
+    "air": {
+      "city": { //城市综合空气质量数据
+        "aqi": "239", //空气质量指数(AQI)是描述空气质量状况的定量指数
+        "pm25": "189", //PM2.5颗粒物（粒径小于等于2.5μm）1小时平均值。单位：μg/m³
+        "pm10": "216", //PM10颗粒物（粒径小于等于10μm）1小时平均值。单位：μg/m³
+        "so2": "14", //二氧化硫1小时平均值。单位：μg/m³
+        "no2": "90", //二氧化氮1小时平均值。单位：μg/m³
+        "co": "1.350", //一氧化碳1小时平均值。单位：mg/m³
+        "o3": "44", //臭氧1小时平均值。单位：μg/m³
+        "primary_pollutant": "PM2.5", //首要污染物
+        "quality": "优", //空气质量类别，有“优、良、轻度污染、中度污染、重度污染、严重污染”6类
+        "last_update": "2015-09-23T13:00:00+08:00" //数据发布时间
+      },
+      "stations": [{ //该城市所有监测站数组
+        "aqi": "248",
+        "pm25": "198",
+        "pm10": "237",
+        "so2": "15",
+        "no2": "112",
+        "co": "1.5",
+        "o3": "23",
+        "primary_pollutant": "PM2.5", //首要污染物
+        "station": "万寿西宫", //监测站名称
+        "latitude": "39.865927",  //监测站纬度
+        "longitude": "116.359805",  //监测站经度
+        "last_update": "2015-09-23T13:00:00+08:00" //数据发布时间
+      }, {
+        ... //更多监测站
+      }]
+    },
+    "last_update": "2015-09-23T22:45:48+08:00"
+  }]
+}
+
+4. LifeSuggestion
+{
+  "results": [{
+    "location": {
+      "id": "WTW3SJ5ZBJUY",
+      "name": "上海",
+      "country": "CN",
+      "path": "上海,上海,中国",
+      "timezone": "Asia/Shanghai",
+      "timezone_offset": "+08:00"
+    },
+    "suggestion": {
+      "ac": { //空调开启
+        "brief": "较少开启",  //简要建议
+        "details": "您将感到很舒适，一般不需要开启空调。" //详细建议
+      },
+      "air_pollution": { //空气污染扩散条件
+        "brief": "较差",
+        "details": "气象条件较不利于空气污染物稀释、扩散和清除，请适当减少室外活动时间。"
+      },
+      "airing": { //晾晒
+        "brief": "不太适宜",
+        "details": "天气阴沉，不利于水分的迅速蒸发，不太适宜晾晒。若需要晾晒，请尽量选择通风的地点。"
+      },
+      "allergy": { //过敏
+        "brief": "极不易发",
+        "details": "天气条件极不易诱发过敏，可放心外出，享受生活。"
+      },
+      "beer": { //啤酒
+        "brief": "较不适宜",
+        "details": "您将会感到有些凉意，建议饮用常温啤酒，并少量饮用为好。"
+      },
+      "boating": { //划船
+        "brief": "较适宜",
+        "details": "白天较适宜划船，但天气阴沉，气温稍低，请注意加衣，小心着凉。"
+      },
+      "car_washing": { //洗车
+        "brief": "不宜",
+        "details": "不宜洗车，未来24小时内有雨，如果在此期间洗车，雨水和路上的泥水可能会再次弄脏您的爱车。"
+      },
+      "chill": { //风寒
+        "brief": "凉",
+        "details": "感觉有点凉，室外活动注意适当增减衣物。"
+      },
+      "comfort": { //舒适度
+        "brief": "较舒适",
+        "details": "白天天气阴沉，会感到有点儿凉，但大部分人完全可以接受。"
+      },
+      "dating": { //约会
+        "brief": "较适宜",
+        "details": "虽然天空有些阴沉，但情侣们可以放心外出，不用担心天气来调皮捣乱而影响了兴致。"
+      },
+      "dressing": { //穿衣
+        "brief": "较冷",
+        "details": "建议着厚外套加毛衣等服装。年老体弱者宜着大衣、呢外套加羊毛衫。"
+      },
+      "fishing": { //钓鱼
+        "brief": "较适宜",
+        "details": "较适合垂钓，但天气稍凉，会对垂钓产生一定的影响。"
+      },
+      "flu": { //感冒
+        "brief": "较易发",
+        "details": "天气较凉，较易发生感冒，请适当增加衣服。体质较弱的朋友尤其应该注意防护。"
+      },
+      "hair_dressing": { //美发
+        "brief": "一般",
+        "details": "注意防晒，洗发不宜太勤，建议选用保湿防晒型洗发护发品。出门请戴上遮阳帽或打遮阳伞。"
+      },
+      "kiteflying": { //放风筝
+        "brief": "不宜",
+        "details": "天气不好，不适宜放风筝。"
+      },
+      "makeup": { //化妆
+        "brief": "保湿",
+        "details": "皮肤易缺水，用润唇膏后再抹口红，用保湿型霜类化妆品。"
+      },
+      "mood": { //心情
+        "brief": "较差",
+        "details": "天气阴沉，会感觉莫名的压抑，情绪低落，此时将所有的悲喜都静静地沉到心底，在喧嚣的尘世里，感受片刻恬淡的宁静。"
+      },
+      "morning_sport": { //晨练
+        "brief": "不宜",
+        "details": "阴天，早晨天气寒冷，请尽量避免户外晨练，若坚持室外晨练请注意保暖防冻，建议年老体弱人群适当减少晨练时间。"
+      },
+      "night_life": { //夜生活
+        "brief": "较不适宜",
+        "details": "有降水，会给您的出行带来很大的不便，建议就近或最好在室内进行夜生活。"
+      },
+      "road_condition": { //路况
+        "brief": "干燥",
+        "details": "阴天，路面比较干燥，路况较好。"
+      },
+      "shopping": { //购物
+        "brief": "适宜",
+        "details": "阴天，在这种天气里去逛街，省去了涂防晒霜，打遮阳伞的麻烦，既可放松身心，又会有很多意外收获。"
+      },
+      "sport": { //运动
+        "brief": "较适宜",
+        "details": "阴天，较适宜进行各种户内外运动。"
+      },
+      "sunscreen": { //防晒
+        "brief": "弱",
+        "details": "属弱紫外辐射天气，长期在户外，建议涂擦SPF在8-12之间的防晒护肤品。"
+      },
+      "traffic": { //交通
+        "brief": "良好",
+        "details": "阴天，路面干燥，交通气象条件良好，车辆可以正常行驶。"
+      },
+      "travel": { //旅游
+        "brief": "适宜",
+        "details": "天气较好，温度适宜，总体来说还是好天气哦，这样的天气适宜旅游，您可以尽情地享受大自然的风光。"
+      },
+      "umbrella": { //雨伞
+        "brief": "不带伞",
+        "details": "阴天，但降水概率很低，因此您在出门的时候无须带雨伞。"
+      },
+      "uv": { //紫外线
+        "brief": "最弱",
+        "details": "属弱紫外线辐射天气，无需特别防护。若长期在户外，建议涂擦SPF在8-12之间的防晒护肤品。"
+      }
+    },
+    "last_update": "2015-11-28T14:10:48+08:00"
+  }]
+}
+
+5. ProCurrentWeather
+{
+  "results": [
+    {
+      "location": {
+        "longitude": "116.359805",
+        "latitude": "39.865927"
+      },
+      "now_grid": {
+        "temperature": "29.09",                  // 温度
+        "humidity": "74.04",                     // 相对湿度
+        "wind_speed": "4.10",                    // 风速
+        "wind_scale": "1",                       // 风力等级
+        "wind_direction_degree": "106.08",       // 风向角
+        "wind_direction": "东南",                 // 风向
+        "precip": "0.01",                        // 降水量（一小时内)
+        "pressure": "998.78",                    // 气压，单位为mb百帕或in英寸
+        "solar_radiation": "281.46"              // 太阳辐射强度，单位为W/m2
+      },
+      "last_update": "2018-08-12T12:00:00+08:00" //数据更新时间
+    }
+  ]
+}
+
+6. ProForcast
+{
+  "results": [
+    {
+      "location": {
+        "longitude": "116.359805",
+        "latitude": "39.865927"
+      },
+      "data": [
+        {
+          "time": "2018-08-06T08:00:00+08:00", // 时间
+          "temperature": "26.95",              // 温度，单位为c摄氏度或f华氏度
+          "humidity": "87.16",                 // 相对湿度，0~100，单位为百分比
+          "precip": "2.01",                    // 上一预报时刻到该时刻之间的总降水量，单位mm
+          "clouds": "84.49",                   // 云量，单位%，范围0~100，天空被云覆盖的百分比
+          "wind_speed": "2.95",                // 风速，单位为km/h公里每小时或mph英里每小时
+          "wind_scale": "1",                   // 风力等级
+          "wind_direction_degree": "232.43",   // 风向角
+          "wind_direction": "西南",             // 风向
+          "code": "14",                        // 天气现象代码
+          "text": "中雨"                        // 天气现象文字
+        }, {
+          ...
+        }
+      ],
+      "last_update": "2018-08-06T11:59:25+08:00"
+    }
+  ]
+}

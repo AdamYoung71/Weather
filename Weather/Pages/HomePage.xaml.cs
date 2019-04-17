@@ -79,6 +79,8 @@ namespace Weather
                 lastUpdatedText.Text = "最后更新：" + lastUpdate[1].Substring(0,5);
                 mainDisc.Text = myWeather.results[0].now.text;
 
+                suggestionText.Text = mySuggestion.results[0].suggestion.car_washing.details ;
+
             }
             catch
             {

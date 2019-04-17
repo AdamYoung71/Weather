@@ -164,6 +164,78 @@ namespace LifeSuggestionAPI//生活指数API
         public string timezone_offset { get; set; }
     }
 
+    public class Ac
+    {
+        /// <summary>
+        /// 较少开启
+        /// </summary>
+        public string brief { get; set; }
+        /// <summary>
+        /// 您将感到很舒适，一般不需要开启空调。
+        /// </summary>
+        public string details { get; set; }
+    }
+
+    public class Air_pollution
+    {
+        /// <summary>
+        /// 良
+        /// </summary>
+        public string brief { get; set; }
+        /// <summary>
+        /// 气象条件有利于空气污染物稀释、扩散和清除，可在室外正常活动。
+        /// </summary>
+        public string details { get; set; }
+    }
+
+    public class Airing
+    {
+        /// <summary>
+        /// 极适宜
+        /// </summary>
+        public string brief { get; set; }
+        /// <summary>
+        /// 天气不错，极适宜晾晒。抓紧时机把久未见阳光的衣物搬出来晒晒太阳吧！
+        /// </summary>
+        public string details { get; set; }
+    }
+
+    public class Allergy
+    {
+        /// <summary>
+        /// 极易发
+        /// </summary>
+        public string brief { get; set; }
+        /// <summary>
+        /// 天气条件极易诱发过敏，易过敏人群尽量减少外出，外出宜穿长衣长裤并佩戴好眼镜和口罩，外出归来时及时清洁手和口鼻。
+        /// </summary>
+        public string details { get; set; }
+    }
+
+    public class Beer
+    {
+        /// <summary>
+        /// 适宜
+        /// </summary>
+        public string brief { get; set; }
+        /// <summary>
+        /// 炎热的天气可能增加啤酒对您的诱惑，适量饮用啤酒会给您带来清凉的感觉，但千万注意不要过量呦！
+        /// </summary>
+        public string details { get; set; }
+    }
+
+    public class Boating
+    {
+        /// <summary>
+        /// 较适宜
+        /// </summary>
+        public string brief { get; set; }
+        /// <summary>
+        /// 白天较适宜划船，但较大的风力会对划船产生一定的影响。
+        /// </summary>
+        public string details { get; set; }
+    }
+
     public class Car_washing
     {
         /// <summary>
@@ -171,7 +243,43 @@ namespace LifeSuggestionAPI//生活指数API
         /// </summary>
         public string brief { get; set; }
         /// <summary>
-        /// 
+        /// 较适宜洗车，未来一天无雨，风力较小，擦洗一新的汽车至少能保持一天。
+        /// </summary>
+        public string details { get; set; }
+    }
+
+    public class Chill
+    {
+        /// <summary>
+        /// 无
+        /// </summary>
+        public string brief { get; set; }
+        /// <summary>
+        /// 温度未达到风寒所需的低温，稍作防寒准备即可。
+        /// </summary>
+        public string details { get; set; }
+    }
+
+    public class Comfort
+    {
+        /// <summary>
+        /// 较舒适
+        /// </summary>
+        public string brief { get; set; }
+        /// <summary>
+        /// 白天天气晴好，您在这种天气条件下，会感觉早晚凉爽、舒适，午后偏热。
+        /// </summary>
+        public string details { get; set; }
+    }
+
+    public class Dating
+    {
+        /// <summary>
+        /// 较适宜
+        /// </summary>
+        public string brief { get; set; }
+        /// <summary>
+        /// 虽然有点风，但情侣们可以放心外出，不用担心天气来调皮捣乱而影响了兴致。
         /// </summary>
         public string details { get; set; }
     }
@@ -179,11 +287,23 @@ namespace LifeSuggestionAPI//生活指数API
     public class Dressing
     {
         /// <summary>
-        /// 较冷
+        /// 热
         /// </summary>
         public string brief { get; set; }
         /// <summary>
-        /// 
+        /// 天气热，建议着短裙、短裤、短薄外套、T恤等夏季服装。
+        /// </summary>
+        public string details { get; set; }
+    }
+
+    public class Fishing
+    {
+        /// <summary>
+        /// 较适宜
+        /// </summary>
+        public string brief { get; set; }
+        /// <summary>
+        /// 较适合垂钓，但风力稍大，会对垂钓产生一定的影响。
         /// </summary>
         public string details { get; set; }
     }
@@ -191,11 +311,107 @@ namespace LifeSuggestionAPI//生活指数API
     public class Flu
     {
         /// <summary>
-        /// 较易发
+        /// 少发
         /// </summary>
         public string brief { get; set; }
         /// <summary>
-        /// 
+        /// 各项气象条件适宜，无明显降温过程，发生感冒机率较低。
+        /// </summary>
+        public string details { get; set; }
+    }
+
+    public class Hair_dressing
+    {
+        /// <summary>
+        /// 一般
+        /// </summary>
+        public string brief { get; set; }
+        /// <summary>
+        /// 风较大，注意防晒，因风尘大，头发易脏，注意保持秀发清洁，建议使用滋润防晒型洗发护发品。
+        /// </summary>
+        public string details { get; set; }
+    }
+
+    public class Kiteflying
+    {
+        /// <summary>
+        /// 较适宜
+        /// </summary>
+        public string brief { get; set; }
+        /// <summary>
+        /// 天气不错，但气温略高，带上太阳帽，选择合适的地点，还是较适宜放风筝的
+        /// </summary>
+        public string details { get; set; }
+    }
+
+    public class Makeup
+    {
+        /// <summary>
+        /// 去油防晒
+        /// </summary>
+        public string brief { get; set; }
+        /// <summary>
+        /// 建议用蜜质SPF20面霜打底，水质无油粉底霜。
+        /// </summary>
+        public string details { get; set; }
+    }
+
+    public class Mood
+    {
+        /// <summary>
+        /// 好
+        /// </summary>
+        public string brief { get; set; }
+        /// <summary>
+        /// 天气较好，空气温润，和风飘飘，美好的天气会带来一天接踵而来的好心情。
+        /// </summary>
+        public string details { get; set; }
+    }
+
+    public class Morning_sport
+    {
+        /// <summary>
+        /// 较适宜
+        /// </summary>
+        public string brief { get; set; }
+        /// <summary>
+        /// 早晨气象条件较适宜晨练，但风力稍大，晨练时会感觉有点凉，晨练时着装不要过于单薄，选择避风的地点。
+        /// </summary>
+        public string details { get; set; }
+    }
+
+    public class Night_life
+    {
+        /// <summary>
+        /// 较适宜
+        /// </summary>
+        public string brief { get; set; }
+        /// <summary>
+        /// 天气较好，虽然有点风，但仍比较适宜夜生活，您可以放心外出。
+        /// </summary>
+        public string details { get; set; }
+    }
+
+    public class Road_condition
+    {
+        /// <summary>
+        /// 干燥
+        /// </summary>
+        public string brief { get; set; }
+        /// <summary>
+        /// 天气较好，路面比较干燥，路况较好。
+        /// </summary>
+        public string details { get; set; }
+    }
+
+    public class Shopping
+    {
+        /// <summary>
+        /// 较适宜
+        /// </summary>
+        public string brief { get; set; }
+        /// <summary>
+        /// 天气较好，虽然风有点大，还是较适宜逛街的，不过出门前要给秀发定定型，别让风吹乱您的秀发。
         /// </summary>
         public string details { get; set; }
     }
@@ -207,7 +423,31 @@ namespace LifeSuggestionAPI//生活指数API
         /// </summary>
         public string brief { get; set; }
         /// <summary>
-        /// 
+        /// 天气较好，但风力较大，推荐您进行室内运动，若在户外运动请注意防风。
+        /// </summary>
+        public string details { get; set; }
+    }
+
+    public class Sunscreen
+    {
+        /// <summary>
+        /// 强
+        /// </summary>
+        public string brief { get; set; }
+        /// <summary>
+        /// 属强紫外辐射天气，外出时应加强防护，建议涂擦SPF在15-20之间，PA++的防晒护肤品。
+        /// </summary>
+        public string details { get; set; }
+    }
+
+    public class Traffic
+    {
+        /// <summary>
+        /// 良好
+        /// </summary>
+        public string brief { get; set; }
+        /// <summary>
+        /// 天气较好，路面干燥，交通气象条件良好，车辆可以正常行驶。
         /// </summary>
         public string details { get; set; }
     }
@@ -219,7 +459,19 @@ namespace LifeSuggestionAPI//生活指数API
         /// </summary>
         public string brief { get; set; }
         /// <summary>
-        /// 
+        /// 天气较好，风稍大，但温度适宜，是个好天气哦。适宜旅游，您可以尽情地享受大自然的无限风光。
+        /// </summary>
+        public string details { get; set; }
+    }
+
+    public class Umbrella
+    {
+        /// <summary>
+        /// 不带伞
+        /// </summary>
+        public string brief { get; set; }
+        /// <summary>
+        /// 天气较好，您在出门的时候无须带雨伞。
         /// </summary>
         public string details { get; set; }
     }
@@ -227,11 +479,11 @@ namespace LifeSuggestionAPI//生活指数API
     public class Uv
     {
         /// <summary>
-        /// 弱
+        /// 强
         /// </summary>
         public string brief { get; set; }
         /// <summary>
-        /// 
+        /// 紫外线辐射强，建议涂擦SPF20左右、PA++的防晒护肤品。避免在10点至14点暴露于日光下。
         /// </summary>
         public string details { get; set; }
     }
@@ -239,25 +491,109 @@ namespace LifeSuggestionAPI//生活指数API
     public class Suggestion
     {
         /// <summary>
+        /// Ac
+        /// </summary>
+        public Ac ac { get; set; }
+        /// <summary>
+        /// Air_pollution
+        /// </summary>
+        public Air_pollution air_pollution { get; set; }
+        /// <summary>
+        /// Airing
+        /// </summary>
+        public Airing airing { get; set; }
+        /// <summary>
+        /// Allergy
+        /// </summary>
+        public Allergy allergy { get; set; }
+        /// <summary>
+        /// Beer
+        /// </summary>
+        public Beer beer { get; set; }
+        /// <summary>
+        /// Boating
+        /// </summary>
+        public Boating boating { get; set; }
+        /// <summary>
         /// Car_washing
         /// </summary>
         public Car_washing car_washing { get; set; }
+        /// <summary>
+        /// Chill
+        /// </summary>
+        public Chill chill { get; set; }
+        /// <summary>
+        /// Comfort
+        /// </summary>
+        public Comfort comfort { get; set; }
+        /// <summary>
+        /// Dating
+        /// </summary>
+        public Dating dating { get; set; }
         /// <summary>
         /// Dressing
         /// </summary>
         public Dressing dressing { get; set; }
         /// <summary>
+        /// Fishing
+        /// </summary>
+        public Fishing fishing { get; set; }
+        /// <summary>
         /// Flu
         /// </summary>
         public Flu flu { get; set; }
+        /// <summary>
+        /// Hair_dressing
+        /// </summary>
+        public Hair_dressing hair_dressing { get; set; }
+        /// <summary>
+        /// Kiteflying
+        /// </summary>
+        public Kiteflying kiteflying { get; set; }
+        /// <summary>
+        /// Makeup
+        /// </summary>
+        public Makeup makeup { get; set; }
+        /// <summary>
+        /// Mood
+        /// </summary>
+        public Mood mood { get; set; }
+        /// <summary>
+        /// Morning_sport
+        /// </summary>
+        public Morning_sport morning_sport { get; set; }
+        /// <summary>
+        /// Night_life
+        /// </summary>
+        public Night_life night_life { get; set; }
+        /// <summary>
+        /// Road_condition
+        /// </summary>
+        public Road_condition road_condition { get; set; }
+        /// <summary>
+        /// Shopping
+        /// </summary>
+        public Shopping shopping { get; set; }
         /// <summary>
         /// Sport
         /// </summary>
         public Sport sport { get; set; }
         /// <summary>
+        /// Sunscreen
+        /// </summary>
+        public Sunscreen sunscreen { get; set; }
+        /// <summary>
+        /// Traffic
+        /// </summary>
+        public Traffic traffic { get; set; }
+        /// <summary>
         /// Travel
         /// </summary>
         public Travel travel { get; set; }
+        /// <summary>
+        /// Umbrella
+        /// </summary>
+        public Umbrella umbrella { get; set; }
         /// <summary>
         /// Uv
         /// </summary>
@@ -275,7 +611,7 @@ namespace LifeSuggestionAPI//生活指数API
         /// </summary>
         public Suggestion suggestion { get; set; }
         /// <summary>
-        /// 2019-03-22T22:40:54+08:00
+        /// 2019-04-16T23:10:42+08:00
         /// </summary>
         public string last_update { get; set; }
     }
@@ -287,6 +623,7 @@ namespace LifeSuggestionAPI//生活指数API
         /// </summary>
         public List<Results> results { get; set; }
     }
+
 
 }
 
