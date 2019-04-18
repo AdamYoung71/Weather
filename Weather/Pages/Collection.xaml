@@ -10,7 +10,7 @@
 
     <Grid>
         <StackPanel VerticalAlignment="Center">
-            <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="Collection"/>
+            
         </StackPanel>
     </Grid>
 </Page>

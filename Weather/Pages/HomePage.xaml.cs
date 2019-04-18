@@ -15,6 +15,8 @@ using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Media.Imaging;
 using Windows.UI.Xaml.Navigation;
 using static Weather.Pages.Events;
+using Weather.Models;
+using System.Collections.ObjectModel;
 
 // https://go.microsoft.com/fwlink/?LinkId=234238 上介绍了“空白页”项模板
 
@@ -25,10 +27,13 @@ namespace Weather
     /// </summary>
     public sealed partial class HomePage : Page
     {
+        ObservableCollection<DailyWeather> dailyWeathers = new ObservableCollection<DailyWeather>();
+
         public HomePage()
         {
             this.InitializeComponent();
             this.NavigationCacheMode = NavigationCacheMode.Enabled;
+            mainDetailListView.DataContext = dailyWeathers;
         }
 
 
@@ -81,6 +86,9 @@ namespace Weather
 
                 suggestionText.Text = mySuggestion.results[0].suggestion.car_washing.details ;
 
+                dailyWeathers.Add(new DailyWeather() { date = "星期日", iconSource = new BitmapImage(new Uri(mainIcon.BaseUri, weatherCode)), tempreture = "16°C" });
+                //dailyWeathers[0] = DailyWeather.getDaily("星期四", myWeather.results[0].now.code, myWeather.results[0].now.temperature);
+               // dailyWeathers = DailyWeather.GetDailyWeathers(3);
             }
             catch
             {

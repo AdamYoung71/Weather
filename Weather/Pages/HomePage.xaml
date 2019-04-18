@@ -7,12 +7,12 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
-    Background="Gray"
+    xmlns:data="using:Weather.Models"
+    Background="Transparent"
     >
     <Pivot Margin="24">
         <PivotItem Header="Today">
             <Grid x:Name="homepageGrid">
-
                 <Grid.RowDefinitions>
                     <RowDefinition Height="3*"/>
                     <RowDefinition Height="3*"/>
@@ -52,14 +52,43 @@
                                    Margin="0,10,50,-10"/>
                     </RelativePanel>
                 </StackPanel>
+                <StackPanel Name="mainDetailPane" Grid.Column="1" Grid.Row="1" Margin="12">
+                    
+                              
+                </StackPanel>
                 <StackPanel Grid.Row="1">
-                    <TextBlock Name="suggestionTitleText" Text="生活指数" FontSize="30" Foreground="White" HorizontalAlignment="Center"/>
+                    <TextBlock Name="suggestionTitleText" Text="生活指数" FontSize="25" Foreground="White" HorizontalAlignment="Center"/>
                     <TextBlock Name="suggestionText" Foreground="White" FontSize="20" TextWrapping="Wrap"/>
                 </StackPanel>
             </Grid>
         </PivotItem>
         <PivotItem Header="Forcast">
-            <TextBlock Name="tomoText" Foreground="White" Text="tomorrow" FontSize='20'/>
+
+            <StackPanel>
+                <TextBlock Name="tomoText" Foreground="White" Text="tomorrow" FontSize='20'/>
+                <GridView x:Name="mainDetailListView"
+                          ItemsSource="{x:Bind dailyWeathers}"
+                          Height="200" Width="600"
+                          HorizontalAlignment="Left"
+                          ScrollViewer.VerticalScrollBarVisibility="Hidden"
+                          IsDoubleTapEnabled="False"
+                          IsFocusEngaged="False">
+                    <GridView.ItemTemplate>
+                        <DataTemplate x:DataType="data:DailyWeather">
+                            <StackPanel Height="200" Width="300">
+                                <TextBlock x:Name="dateText" Height="40" Width="100" Text="{x:Bind date}" Foreground="White" HorizontalAlignment="Center"/>
+                                <Image Source="{x:Bind iconSource}" Height="50"/>
+                                <TextBlock x:Name="tempText" Text="{x:Bind tempreture}" FontSize="30" Foreground="White" HorizontalAlignment="Center"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </GridView.ItemTemplate>
+                    <GridView.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <ItemsWrapGrid MaximumRowsOrColumns="2" Orientation="Horizontal"/>
+                        </ItemsPanelTemplate>
+                    </GridView.ItemsPanel>
+                </GridView>
+            </StackPanel>
         </PivotItem>
     </Pivot>
 </Page>
