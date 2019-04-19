@@ -1,12 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using System.Security.Cryptography;
+using Windows.ApplicationModel.Core;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.System;
+using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -31,6 +34,9 @@ namespace Weather
         {
             this.InitializeComponent();
             this.NavigationCacheMode = NavigationCacheMode.Enabled;
+            var coreTitleBar = CoreApplication.GetCurrentView().TitleBar;
+            coreTitleBar.ExtendViewIntoTitleBar = true;
+
         }
 
 
@@ -207,7 +213,7 @@ namespace Weather
        
         
 
-        private void NavViewSearchBox_QuerySubmitted(AutoSuggestBox sender, AutoSuggestBoxQuerySubmittedEventArgs args)
+        private async void NavViewSearchBox_QuerySubmitted(AutoSuggestBox sender, AutoSuggestBoxQuerySubmittedEventArgs args)
         {
             try
             {
@@ -242,7 +248,17 @@ namespace Weather
 
             catch
             {
-                
+                var dialog = new ContentDialog()
+                {
+                    Title = "消息提示",
+                    Content = "当前设置尚未保存，你确认要退出该页面吗?",
+                    PrimaryButtonText = "确定",
+                    SecondaryButtonText = "取消",
+                    FullSizeDesired = false,
+                };
+
+                dialog.PrimaryButtonClick += (_s, _e) => { };
+                await dialog.ShowAsync();
             }
         }
 

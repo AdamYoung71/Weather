@@ -19,9 +19,9 @@
                     <RowDefinition Height="2*"/>
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="2*"/>
-                    <ColumnDefinition Width="7*"/>
-                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="8*"/>
+                    <ColumnDefinition Width="1*"/>
                 </Grid.ColumnDefinitions>
                 <StackPanel Grid.Column="1">
                     <RelativePanel Height="200">
@@ -56,9 +56,28 @@
                     
                               
                 </StackPanel>
-                <StackPanel Grid.Row="1">
-                    <TextBlock Name="suggestionTitleText" Text="生活指数" FontSize="25" Foreground="White" HorizontalAlignment="Center"/>
-                    <TextBlock Name="suggestionText" Foreground="White" FontSize="20" TextWrapping="Wrap"/>
+                <StackPanel Grid.Row="1" Grid.Column="1" Margin="24" Grid.RowSpan="2">
+                     <TextBlock RelativePanel.AlignLeftWithPanel="True" Text="详细信息" Style="{ThemeResource BodyTextBlockStyle}" Foreground="White"/>
+                    <StackPanel  Height="200" CornerRadius="20" Background="{StaticResource SystemControlAltMediumLowAcrylicElementMediumBrush}">
+                        <StackPanel Margin="12">
+                            <TextBlock FontSize="20" Foreground="White">nihao </TextBlock>
+                            <TextBlock></TextBlock>
+                        </StackPanel>
+                     </StackPanel>
+                    <TextBlock RelativePanel.AlignLeftWithPanel="True" Text="生活指数" Style="{ThemeResource BodyTextBlockStyle}" Foreground="White"/>
+                    <StackPanel  Height="200" CornerRadius="20" Background="{StaticResource SystemControlAltMediumLowAcrylicWindowMediumBrush}">
+                        <StackPanel Margin="12">
+                            <TextBlock FontSize="20" Foreground="White">nihao</TextBlock>
+                            <TextBlock></TextBlock>
+                        </StackPanel>
+                    </StackPanel>
+                    <TextBlock RelativePanel.AlignLeftWithPanel="True" Text="其他" Style="{ThemeResource BodyTextBlockStyle}" Foreground="White"/>
+                    <StackPanel  Height="200" CornerRadius="20" Background="{StaticResource SystemControlBaseMediumLowAcrylicWindowMediumBrush}">
+                        <StackPanel Margin="12">
+                            <TextBlock FontSize="20" Foreground="White">nihao</TextBlock>
+                            <TextBlock></TextBlock>
+                        </StackPanel>
+                    </StackPanel>
                 </StackPanel>
             </Grid>
         </PivotItem>
@@ -72,7 +91,7 @@
                           HorizontalAlignment="Left"
                           ScrollViewer.VerticalScrollBarVisibility="Hidden"
                           IsDoubleTapEnabled="False"
-                          IsFocusEngaged="False">
+                          SelectionMode="None">
                     <GridView.ItemTemplate>
                         <DataTemplate x:DataType="data:DailyWeather">
                             <StackPanel Height="200" Width="300">

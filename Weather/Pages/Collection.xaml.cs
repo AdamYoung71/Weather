@@ -25,6 +25,7 @@ namespace Weather
         public Collection()
         {
             this.InitializeComponent();
+            this.NavigationCacheMode = NavigationCacheMode.Enabled;
         }
     }
 }

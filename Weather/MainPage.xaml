@@ -10,7 +10,6 @@
  
     Background="{StaticResource SystemControlChromeMediumAcrylicWindowMediumBrush}">
 
-
     
     
     <Grid>
@@ -27,7 +26,8 @@
                          Loaded="NavView_Loaded"
                          ItemInvoked="NavView_ItemInvoked"
                          BackRequested="NavView_BackRequested"
-                         PaneDisplayMode="Top">
+                         PaneDisplayMode="Top"
+                         Background="Transparent">
             <NavigationView.MenuItems>
                 <NavigationViewItem Tag="home" Icon="Home" Content="主页"/>
                 <NavigationViewItemSeparator/>
@@ -54,7 +54,7 @@
                                 MinWidth="150"/>
             </NavigationView.AutoSuggestBox>
 
-            <ScrollViewer>
+            <ScrollViewer VerticalScrollBarVisibility="Hidden">
                 <StackPanel>
                     <Frame x:Name="ContentFrame" Padding="12,0,12,24" IsTabStop="True"
                             NavigationFailed="ContentFrame_NavigationFailed">

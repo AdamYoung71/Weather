@@ -84,7 +84,7 @@ namespace Weather
                 lastUpdatedText.Text = "最后更新：" + lastUpdate[1].Substring(0,5);
                 mainDisc.Text = myWeather.results[0].now.text;
 
-                suggestionText.Text = mySuggestion.results[0].suggestion.car_washing.details ;
+                //suggestionText.Text = mySuggestion.results[0].suggestion.car_washing.details ;
 
                 dailyWeathers.Add(new DailyWeather() { date = "星期日", iconSource = new BitmapImage(new Uri(mainIcon.BaseUri, weatherCode)), tempreture = "16°C" });
                 //dailyWeathers[0] = DailyWeather.getDaily("星期四", myWeather.results[0].now.code, myWeather.results[0].now.temperature);
@@ -97,7 +97,18 @@ namespace Weather
                 cityNameText.Text = "Error";
                 curTempText.Text = "--°C";
                 tomoText.Text = " ";
-              
+                var dialog = new ContentDialog()
+                {
+                    Title = "消息提示",
+                    Content = "输入错误！",
+                    PrimaryButtonText = "确定",
+                    SecondaryButtonText = "取消",
+                    FullSizeDesired = false,
+                };
+
+                dialog.PrimaryButtonClick += (_s, _e) => { };
+                await dialog.ShowAsync();
+
             }
 
 
