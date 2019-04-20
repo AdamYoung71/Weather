@@ -219,7 +219,7 @@ namespace Weather
             {
                 string cityName = args.QueryText;
                 Pages.Parameters.cityName = cityName;
-                Pages.Parameters.signal = true;
+                
 
                 ContentFrame.Navigate(typeof(HomePage),cityName);//折腾我好几天！
 

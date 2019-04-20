@@ -129,6 +129,7 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="Models\DailyWeather.cs" />
+    <Compile Include="Models\items.cs" />
     <Compile Include="Pages\Collection.xaml.cs">
       <DependentUpon>Collection.xaml</DependentUpon>
     </Compile>
@@ -155,6 +156,41 @@
   <ItemGroup>
     <Content Include="Assets\backgrounds\test1.jpg" />
     <Content Include="Assets\backgrounds\test2.jpg" />
+    <Content Include="Assets\Icons\others\aqi.png" />
+    <Content Include="Assets\Icons\others\barometer.png" />
+    <Content Include="Assets\Icons\others\clothes.png" />
+    <Content Include="Assets\Icons\others\clouds.png" />
+    <Content Include="Assets\Icons\others\co2.png" />
+    <Content Include="Assets\Icons\others\dew_point.png" />
+    <Content Include="Assets\Icons\others\dry.png" />
+    <Content Include="Assets\Icons\others\dust.png" />
+    <Content Include="Assets\Icons\others\fever.png" />
+    <Content Include="Assets\Icons\others\fires.png" />
+    <Content Include="Assets\Icons\others\fog_day.png" />
+    <Content Include="Assets\Icons\others\humidity.png" />
+    <Content Include="Assets\Icons\others\icons8_barometer_gauge_96px.png" />
+    <Content Include="Assets\Icons\others\icons8_cloud_lighting_96px.png" />
+    <Content Include="Assets\Icons\others\icons8_high_tide_96px.png" />
+    <Content Include="Assets\Icons\others\icons8_hygrometer_96px.png" />
+    <Content Include="Assets\Icons\others\icons8_icy_96px.png" />
+    <Content Include="Assets\Icons\others\icons8_low_tide_96px.png" />
+    <Content Include="Assets\Icons\others\icons8_netatmo_weather_station_96px.png" />
+    <Content Include="Assets\Icons\others\moisture.png" />
+    <Content Include="Assets\Icons\others\o3.png" />
+    <Content Include="Assets\Icons\others\particles.png" />
+    <Content Include="Assets\Icons\others\partly_cloudy.png" />
+    <Content Include="Assets\Icons\others\pressure.png" />
+    <Content Include="Assets\Icons\others\rainy.png" />
+    <Content Include="Assets\Icons\others\rain_gauge.png" />
+    <Content Include="Assets\Icons\others\sports.png" />
+    <Content Include="Assets\Icons\others\sunrise.png" />
+    <Content Include="Assets\Icons\others\sunset.png" />
+    <Content Include="Assets\Icons\others\thermometer.png" />
+    <Content Include="Assets\Icons\others\uv.png" />
+    <Content Include="Assets\Icons\others\visible.png" />
+    <Content Include="Assets\Icons\others\wet.png" />
+    <Content Include="Assets\Icons\others\windsock.png" />
+    <Content Include="Assets\Icons\others\wind_gauge.png" />
     <Content Include="Assets\Icons\white\0%401x.png" />
     <Content Include="Assets\Icons\white\0%402x.png" />
     <Content Include="Assets\Icons\white\1%401x.png" />

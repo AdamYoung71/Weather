@@ -18,7 +18,7 @@ namespace CityToLocation
         {
             var location = cityName;
             var http = new HttpClient();
-            //var response = await http.GetAsync("https://restapi.amap.com/v3/geocode/geo?address=北京市朝阳区阜通东大街6号&output=json&key=<用户的key>");
+            //var response = await http.GetAsync("https://restapi.amap.com/v3/geocode/geo?address=北京市朝阳区阜通东大街6号&output=json&key=265900fd6d337e0313d7e02745492c28");
             var response = await http.GetAsync("https://restapi.amap.com/v3/geocode/geo?address=" + location + "&output=json&key=265900fd6d337e0313d7e02745492c28");
             var result = await response.Content.ReadAsStringAsync();
             var serializer = new DataContractJsonSerializer(typeof(Root));

@@ -5,12 +5,38 @@
     xmlns:local="using:Weather"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:data="using:Weather.Models"
     mc:Ignorable="d"
     Background="Transparent">
 
     <Grid>
-        <StackPanel VerticalAlignment="Center">
+        <StackPanel Margin="24">
             
+            <Image Name="myImg" Width="50" Source="/Assets/Icons/white/0@1x.png" Visibility="Collapsed"/>
+            <GridView x:Name="collectionDetailListView"
+                          ItemsSource="{x:Bind collectionDailyWeathers}"
+                         
+                          HorizontalAlignment="Left"
+                          ScrollViewer.VerticalScrollBarVisibility="Hidden"
+                          SelectionMode="Single"
+                          
+                          Margin="24">
+                <GridView.ItemTemplate>
+                    <DataTemplate x:DataType="data:DailyWeather">
+                        <StackPanel Height="180" Width="180">
+                            <TextBlock x:Name="dateText" Height="40" Width="100" Text="{x:Bind date}" Foreground="White" HorizontalAlignment="Center"/>
+                            <Image Source="{x:Bind iconSource}" Height="50"/>
+                            <TextBlock x:Name="tempText" Text="{x:Bind tempreture}" FontSize="30" Foreground="White" HorizontalAlignment="Center"/>
+                            <TextBlock x:Name="descripText" FontSize="30" Foreground="White" Text="{x:Bind descrip}" HorizontalAlignment="Center"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </GridView.ItemTemplate>
+                <GridView.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <ItemsWrapGrid MaximumRowsOrColumns="7" Orientation="Horizontal"/>
+                    </ItemsPanelTemplate>
+                </GridView.ItemsPanel>
+            </GridView>
         </StackPanel>
     </Grid>
 </Page>

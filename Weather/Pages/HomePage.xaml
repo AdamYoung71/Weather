@@ -10,6 +10,7 @@
     xmlns:data="using:Weather.Models"
     Background="Transparent"
     >
+
     <Pivot Margin="24">
         <PivotItem Header="Today">
             <Grid x:Name="homepageGrid">
@@ -20,10 +21,17 @@
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="1*"/>
-                    <ColumnDefinition Width="8*"/>
+                    <ColumnDefinition Width="4*"/>
+                    <ColumnDefinition Width="4*"/>
                     <ColumnDefinition Width="1*"/>
                 </Grid.ColumnDefinitions>
-                <StackPanel Grid.Column="1">
+                <StackPanel Grid.Column="2" Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Top">
+                    <SymbolIcon Name="collectionIcon" Symbol="OutlineStar"  Margin="0,8,0,0" Height="20"/>
+                    <Button Content="收藏" Margin="0,8,0,0" Background="Transparent" Click="Button_Click"  />
+                </StackPanel>
+                
+                
+                <StackPanel Grid.Column="1" Grid.ColumnSpan="2">
                     <RelativePanel Height="200">
                         <TextBlock Name="cityNameText" 
                                    FontSize="20" 
@@ -50,60 +58,96 @@
                               RelativePanel.Below="mainDisc"
                                    RelativePanel.AlignHorizontalCenterWithPanel="True"
                                    Margin="0,10,50,-10"/>
+
                     </RelativePanel>
                 </StackPanel>
-                <StackPanel Name="mainDetailPane" Grid.Column="1" Grid.Row="1" Margin="12">
-                    
-                              
-                </StackPanel>
-                <StackPanel Grid.Row="1" Grid.Column="1" Margin="24" Grid.RowSpan="2">
-                     <TextBlock RelativePanel.AlignLeftWithPanel="True" Text="详细信息" Style="{ThemeResource BodyTextBlockStyle}" Foreground="White"/>
-                    <StackPanel  Height="200" CornerRadius="20" Background="{StaticResource SystemControlAltMediumLowAcrylicElementMediumBrush}">
-                        <StackPanel Margin="12">
-                            <TextBlock FontSize="20" Foreground="White">nihao </TextBlock>
-                            <TextBlock></TextBlock>
-                        </StackPanel>
-                     </StackPanel>
+
+                <StackPanel Grid.Row="1" Grid.Column="1" Margin="24" Grid.RowSpan="2" Grid.ColumnSpan="2">
+                    <TextBlock RelativePanel.AlignLeftWithPanel="True" Text="详细信息" Style="{ThemeResource BodyTextBlockStyle}" Foreground="White"/>
+                    <RelativePanel  Height="200" CornerRadius="20" Background="{StaticResource SystemControlAltMediumLowAcrylicElementMediumBrush}">
+                     <!--   <RelativePanel Margin="12" >
+
+                            <Image Name="feelsLikeIcon" Height="30" Width="30" Source="/Assets/Icons/others/thermometer.png"/>
+                            <TextBlock Name="feelsLikeText" FontSize="22" Foreground="White" Margin="40,0,0,0">体感温度</TextBlock>
+                            <TextBlock Name="feelsLiketempText" FontSize="22" Foreground="White" RelativePanel.AlignRightWithPanel="True" Text="16°C" Margin="0,0,24,0" FontWeight="Bold"/>
+
+                            <Image Name="pressureIcon" Height="30" Margin="0,30,0,0"  Source="/Assets/Icons/others/pressure.png" RelativePanel.Below = "feelsLikeIcon"/>
+                            <TextBlock Name="pressureText" FontSize="22" Foreground="White" RelativePanel.Below="feelsLikeText" RelativePanel.RightOf="pressureIcon" Margin="15,25,0,0">气压</TextBlock>
+                            <TextBlock Name="pressureNumText" FontSize="25" Foreground="White" Text="mb" RelativePanel.AlignRightWithPanel="True" RelativePanel.Below="feelsLiketempText" Margin="0,20,30,0" FontWeight="Bold"/>
+
+                            <Image Name="humidityIcon" Height="30" Source ="/Assets/Icons/others/humidity.png" RelativePanel.Below="pressureIcon" Margin="0,30,0,0"/>
+                            <TextBlock Name="humidityText"/>
+                            <TextBlock/>
+
+                            <Image/>
+                            <TextBlock/>
+                            <TextBlock/>
+
+
+                            <Image/>
+                            <TextBlock/>
+                            <TextBlock/>
+
+                        </RelativePanel>-->
+                        
+                        <GridView x:Name="myListView" ItemsSource="{x:Bind myItems}" SelectionMode="None"  Margin="0,10,0,0">
+                            <GridView.ItemTemplate>
+                                <DataTemplate x:DataType="data:Items">
+                                    <RelativePanel Margin="15"  Height="30" Width="850">
+
+                                        <Image Name="feelsLikeIcon" Height="30" Width="30" Source="{x:Bind icon}"  Margin="0,-8,0,0"/>
+                                        <TextBlock Name="feelsLikeText" FontSize="22" Foreground="White" Text="{x:Bind text}" RelativePanel.RightOf="feelsLikeIcon" Margin="10,0,0,0"/>
+                                        <TextBlock Name="feelsLiketempText" FontSize="22" Foreground="White" Text="{x:Bind figure}" FontWeight="Bold" RelativePanel.AlignRightWithPanel="True"/>
+                        </RelativePanel>
+                        </DataTemplate>
+                            </GridView.ItemTemplate>
+                            
+                        </GridView>
+                        
+                    </RelativePanel>
                     <TextBlock RelativePanel.AlignLeftWithPanel="True" Text="生活指数" Style="{ThemeResource BodyTextBlockStyle}" Foreground="White"/>
-                    <StackPanel  Height="200" CornerRadius="20" Background="{StaticResource SystemControlAltMediumLowAcrylicWindowMediumBrush}">
+                    <StackPanel  Height="200" CornerRadius="20" Background="{StaticResource SystemControlAltMediumLowAcrylicElementMediumBrush}">
                         <StackPanel Margin="12">
                             <TextBlock FontSize="20" Foreground="White">nihao</TextBlock>
                             <TextBlock></TextBlock>
                         </StackPanel>
                     </StackPanel>
-                    <TextBlock RelativePanel.AlignLeftWithPanel="True" Text="其他" Style="{ThemeResource BodyTextBlockStyle}" Foreground="White"/>
-                    <StackPanel  Height="200" CornerRadius="20" Background="{StaticResource SystemControlBaseMediumLowAcrylicWindowMediumBrush}">
+                    <TextBlock RelativePanel.AlignLeftWithPanel="True" Text="空气质量" Style="{ThemeResource BodyTextBlockStyle}" Foreground="White"/>
+                    <StackPanel  Height="200" CornerRadius="20" Background="{StaticResource SystemControlAltMediumLowAcrylicElementMediumBrush}">
                         <StackPanel Margin="12">
                             <TextBlock FontSize="20" Foreground="White">nihao</TextBlock>
                             <TextBlock></TextBlock>
+                            
                         </StackPanel>
                     </StackPanel>
                 </StackPanel>
             </Grid>
         </PivotItem>
         <PivotItem Header="Forcast">
-
+            
             <StackPanel>
-                <TextBlock Name="tomoText" Foreground="White" Text="tomorrow" FontSize='20'/>
+                <TextBlock Name="tomoText" Foreground="White" Text="七天天气预报" FontSize='20'/>
                 <GridView x:Name="mainDetailListView"
                           ItemsSource="{x:Bind dailyWeathers}"
-                          Height="200" Width="600"
+                         
                           HorizontalAlignment="Left"
                           ScrollViewer.VerticalScrollBarVisibility="Hidden"
-                          IsDoubleTapEnabled="False"
-                          SelectionMode="None">
+                          SelectionMode="Extended"
+                          ItemClick="MainDetailListView_ItemClick"
+                          Margin="24">
                     <GridView.ItemTemplate>
                         <DataTemplate x:DataType="data:DailyWeather">
-                            <StackPanel Height="200" Width="300">
+                            <StackPanel Height="180" Width="180">
                                 <TextBlock x:Name="dateText" Height="40" Width="100" Text="{x:Bind date}" Foreground="White" HorizontalAlignment="Center"/>
                                 <Image Source="{x:Bind iconSource}" Height="50"/>
                                 <TextBlock x:Name="tempText" Text="{x:Bind tempreture}" FontSize="30" Foreground="White" HorizontalAlignment="Center"/>
+                                <TextBlock x:Name="descripText" FontSize="30" Foreground="White" Text="{x:Bind descrip}" HorizontalAlignment="Center"/>
                             </StackPanel>
                         </DataTemplate>
                     </GridView.ItemTemplate>
                     <GridView.ItemsPanel>
                         <ItemsPanelTemplate>
-                            <ItemsWrapGrid MaximumRowsOrColumns="2" Orientation="Horizontal"/>
+                            <ItemsWrapGrid MaximumRowsOrColumns="7" Orientation="Horizontal"/>
                         </ItemsPanelTemplate>
                     </GridView.ItemsPanel>
                 </GridView>

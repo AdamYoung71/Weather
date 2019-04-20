@@ -14,14 +14,18 @@
     
     <Grid>
         <Grid.Background >
-        <LinearGradientBrush StartPoint="1,0">
-            <GradientStop Color="#7F7FD5" Offset="1"/>
-            <GradientStop Color="#86A8E7" Offset="0.5"/>
-            <GradientStop Color="#91EAE4" Offset="0"/>
+            <LinearGradientBrush StartPoint="1,0">
+                <GradientStop Color="#7F7FD5" Offset="1"/>
+                <GradientStop Color="#86A8E7" Offset="0.5"/>
+                <GradientStop Color="#91EAE4" Offset="0"/>
 
-        </LinearGradientBrush>
+            </LinearGradientBrush>
         </Grid.Background>
 
+        <CommandBar>
+            
+        </CommandBar>
+        
         <NavigationView x:Name="NavView"                        
                          Loaded="NavView_Loaded"
                          ItemInvoked="NavView_ItemInvoked"
