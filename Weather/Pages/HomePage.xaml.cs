@@ -59,6 +59,8 @@ namespace Weather
             myItems.Add(new Items() { icon = new BitmapImage(new Uri(mainIcon.BaseUri, "/Assets/Icons/others/co2.png")), figure = "132", text = "二氧化碳" });
             myItems.Add(new Items() { icon = new BitmapImage(new Uri(mainIcon.BaseUri, "/Assets/Icons/others/co2.png")), figure = "132", text = "二氧化碳" });
             myItems.Add(new Items() { icon = new BitmapImage(new Uri(mainIcon.BaseUri, "/Assets/Icons/others/co2.png")), figure = "132", text = "二氧化碳" });
+            myItems.Add(new Items() { icon = new BitmapImage(new Uri(mainIcon.BaseUri, "/Assets/Icons/others/co2.png")), figure = "132", text = "二氧化碳" });
+           
 
         }
 

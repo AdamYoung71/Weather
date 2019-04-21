@@ -36,7 +36,7 @@
                 <NavigationViewItem Tag="home" Icon="Home" Content="主页"/>
                 <NavigationViewItemSeparator/>
                 
-                <NavigationViewItem Tag="Collection" Content="Collection" Icon="OutlineStar">
+                <NavigationViewItem Tag="Collection" Content="收藏" Icon="OutlineStar">
 
                 </NavigationViewItem>
 
@@ -76,15 +76,16 @@
                         MinWindowWidth="{x:Bind NavView.CompactModeThresholdWidth}"/>
                     </VisualState.StateTriggers>
                     <VisualState.Setters>
-                        <!-- Remove the next 3 lines for left-only navigation. -->
+                       <!--  Remove the next 3 lines for left-only navigation. -->
                         <Setter Target="NavView.PaneDisplayMode" Value="top"/>
                         <Setter Target="NavViewSearchBox.Width" Value="200"/>
                         <Setter Target="MainPagesHeader.Visibility" Value="Collapsed"/>
-                        <!-- Leave the next line for left-only navigation. -->
+                        
+                      <!--   Leave the next line for left-only navigation. -->
                         <Setter Target="ContentFrame.Padding" Value="24,0,24,24"/>
                     </VisualState.Setters>
                 </VisualState>
             </VisualStateGroup>
-        </VisualStateManager.VisualStateGroups>
+        </VisualStateManager.VisualStateGroups> 
     </Grid>
 </Page>
