@@ -15,8 +15,8 @@
         </Grid.RowDefinitions>
         <ScrollViewer>
             <StackPanel >
-                <TextBlock FontSize="30" Margin="24,64,64,0" Foreground="White">数据提供方</TextBlock>
-                <Image Name="providerIcon" Source="/Assets/logo-red-text-white-2x.png" Height="100" HorizontalAlignment="Left"/>
+                <TextBlock FontSize="30" Margin="24" Foreground="White">数据提供方</TextBlock>
+                <Image Name="providerIcon" Source="/Assets/logo-red-text-white-2x.png" Height="80" HorizontalAlignment="Left"/>
             </StackPanel>
         </ScrollViewer>
     </Grid>

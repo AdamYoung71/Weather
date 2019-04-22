@@ -13,6 +13,7 @@ namespace Weather.Pages
     public class Parameters
     {
         public static string cityName = "成都";
+        public static string previous = cityName;
         public static List<Boolean> signal = new List<bool>();
         public static void getCity(string s)
         {

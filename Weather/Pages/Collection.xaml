@@ -15,11 +15,11 @@
             <Image Name="myImg" Width="50" Source="/Assets/Icons/white/0@1x.png" Visibility="Collapsed"/>
             <GridView x:Name="collectionDetailListView"
                           ItemsSource="{x:Bind collectionDailyWeathers}"
-                         
+                          ItemClick="CollectionDetailListView_ItemClick"
                           HorizontalAlignment="Left"
                           ScrollViewer.VerticalScrollBarVisibility="Hidden"
                           SelectionMode="Single"
-                          
+                          IsItemClickEnabled="True"
                           Margin="24">
                 <GridView.ItemTemplate>
                     <DataTemplate x:DataType="data:DailyWeather">

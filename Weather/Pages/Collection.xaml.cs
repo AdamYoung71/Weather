@@ -28,7 +28,7 @@ namespace Weather
     {
         public ObservableCollection<DailyWeather> collectionDailyWeathers = new ObservableCollection<DailyWeather>();
 
-       
+
 
 
         public Collection()
@@ -39,14 +39,14 @@ namespace Weather
 
         }
 
-        
-       
+
+
 
         protected override async void OnNavigatedTo(NavigationEventArgs e)
         {
-            if(Pages.Parameters.collections != null&&Convert.ToString(e.Parameter)=="1")
+            if (Pages.Parameters.collections != null && Convert.ToString(e.Parameter) == "1")
             {
-                collectionDailyWeathers.Add(new DailyWeather() { date =Pages.Parameters.cityName, iconSource = new BitmapImage(new Uri(myImg.BaseUri, "/Assets/Icons/white/3@2x.png")), tempreture = "16°C", descrip = "多云" });
+                collectionDailyWeathers.Add(new DailyWeather() { date = Pages.Parameters.cityName, iconSource = new BitmapImage(new Uri(myImg.BaseUri, "/Assets/Icons/white/3@2x.png")), tempreture = "16°C", descrip = "多云" });
                 var dialog = new ContentDialog()    //消息框
                 {
                     Title = "消息提示",
@@ -66,7 +66,7 @@ namespace Weather
                 }
                 else
                 {
-                    collectionDailyWeathers.RemoveAt(index-1);
+                    collectionDailyWeathers.RemoveAt(index - 1);
                 }
                 var dialog = new ContentDialog()    //消息框
                 {
@@ -80,8 +80,23 @@ namespace Weather
                 dialog.PrimaryButtonClick += (_s, _e) => { };
                 await dialog.ShowAsync();
             }
-           
+
             base.OnNavigatedTo(e);
+        }
+
+        private void CollectionDetailListView_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            try
+            {
+                DailyWeather a = e.ClickedItem as DailyWeather;
+                Pages.Parameters.cityName = a.date;
+                Pages.Parameters.previous = a.date;
+                Frame.Navigate(typeof(HomePage));
+            }
+            catch
+            {
+
+            }
         }
     }
 }

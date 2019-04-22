@@ -169,7 +169,10 @@
     <Content Include="Assets\Icons\others\fog_day.png" />
     <Content Include="Assets\Icons\others\humidity.png" />
     <Content Include="Assets\Icons\others\icons8_barometer_gauge_96px.png" />
+    <Content Include="Assets\Icons\others\hang.png" />
     <Content Include="Assets\Icons\others\icons8_cloud_lighting_96px.png" />
+    <Content Include="Assets\Icons\others\car.png" />
+    <Content Include="Assets\Icons\others\quality.png" />
     <Content Include="Assets\Icons\others\icons8_high_tide_96px.png" />
     <Content Include="Assets\Icons\others\icons8_hygrometer_96px.png" />
     <Content Include="Assets\Icons\others\icons8_icy_96px.png" />

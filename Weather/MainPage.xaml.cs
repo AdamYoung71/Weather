@@ -228,20 +228,7 @@ namespace Weather
                 ImageBrush imageBrush = new ImageBrush();
                 imageBrush.ImageSource = new BitmapImage(new Uri("ms-appx:///Assets/backgrouds/test1.jpg", UriKind.Absolute));
 
-               
-
-                /*var myWeather = await MainAPI.MainAPI.GetWrather(cityName);     //实例化主要天气API
-                var mySuggestion = await LifeSuggestionAPI.LifeSuggestionAPI.GetSuggestion(cityName);//实例化生活指数
-                var myLocation = await CityToLocation.CityToLocation.GetLocation(cityName);     //使用高德API将城市名转换为经纬度。
-                string[] Locations = myLocation.geocodes[0].location.Split(",");        //将用逗号隔开的经纬度分割分别存入。
-                double Lat = Convert.ToDouble(Locations[0]);
-                double Lon = Convert.ToDouble(Locations[1]);
-                var myCurrentWeather = await ProCurrentWeather.ProCurrentWeather.GetProCurrentWeather(Lon, Lat);//实例化高级当前天气API
-                var myForecast = await ProForecast.ProForecast.GetProForecast(Lon, Lat);//实例化高级天气预报API
-                */
-               
-
-
+                Pages.Parameters.previous = Pages.Parameters.cityName;
 
 
             }
