@@ -18,14 +18,9 @@
                 <GradientStop Color="#7F7FD5" Offset="1"/>
                 <GradientStop Color="#86A8E7" Offset="0.5"/>
                 <GradientStop Color="#91EAE4" Offset="0"/>
-
             </LinearGradientBrush>
         </Grid.Background>
 
-        <CommandBar>
-            
-        </CommandBar>
-        
         <NavigationView x:Name="NavView"                        
                          Loaded="NavView_Loaded"
                          ItemInvoked="NavView_ItemInvoked"
@@ -43,12 +38,9 @@
             </NavigationView.MenuItems>
             <NavigationView.PaneFooter>
                 <NavigationViewItem Icon="Refresh" Content="刷新" Tapped="NavigationViewItem_Tapped"/>
-                
             </NavigationView.PaneFooter>
 
             <NavigationView.AutoSuggestBox>
-                <!-- See AutoSuggestBox documentation for
-                 more info about how to implement search. -->
                 <AutoSuggestBox x:Name="NavViewSearchBox" 
                                 QueryIcon="Find"
                                 PlaceholderText="请输入城市名"
@@ -62,7 +54,6 @@
                 <StackPanel>
                     <Frame x:Name="ContentFrame" Padding="12,0,12,24" IsTabStop="True"
                             NavigationFailed="ContentFrame_NavigationFailed">
-                        
                     </Frame>
                 </StackPanel>
             </ScrollViewer>
@@ -76,12 +67,9 @@
                         MinWindowWidth="{x:Bind NavView.CompactModeThresholdWidth}"/>
                     </VisualState.StateTriggers>
                     <VisualState.Setters>
-                       <!--  Remove the next 3 lines for left-only navigation. -->
                         <Setter Target="NavView.PaneDisplayMode" Value="top"/>
                         <Setter Target="NavViewSearchBox.Width" Value="200"/>
                         <Setter Target="MainPagesHeader.Visibility" Value="Collapsed"/>
-                        
-                      <!--   Leave the next line for left-only navigation. -->
                         <Setter Target="ContentFrame.Padding" Value="24,0,24,24"/>
                     </VisualState.Setters>
                 </VisualState>

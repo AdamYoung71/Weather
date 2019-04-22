@@ -14,9 +14,9 @@ using Windows.UI.Xaml.Controls;
 
 namespace MainAPI
 {
-    /*class MainAPI
+    class MainAPI
     {
-        public async static Task<Root> GetWrather(string city)//主函数，序列化API
+        public async static Task<Root> getWeather(string city)//主函数，序列化API
         {
             var location_cd = city;
             var http = new HttpClient();
@@ -31,71 +31,119 @@ namespace MainAPI
             return data;
         }
 
-        internal static Task GetWrather(AutoSuggestBoxQuerySubmittedEventArgs args)
-        {
-            throw new NotImplementedException();
-        }
+        
     }
 
 
 
 
 
-    /*API内容
-    [DataContract]
+    /*API内容*/
     public class Location
     {
-
-        [DataMember]
+        /// <summary>
+        /// WX4FBXXFKE4F
+        /// </summary>
         public string id { get; set; }
-
-        [DataMember]
+        /// <summary>
+        /// 北京
+        /// </summary>
         public string name { get; set; }
-
+        /// <summary>
+        /// CN
+        /// </summary>
         public string country { get; set; }
-        [DataMember]
-
+        /// <summary>
+        /// 北京,北京,中国
+        /// </summary>
         public string path { get; set; }
-        [DataMember]
-
+        /// <summary>
+        /// Asia/Shanghai
+        /// </summary>
         public string timezone { get; set; }
-        [DataMember]
-
+        /// <summary>
+        /// +08:00
+        /// </summary>
         public string timezone_offset { get; set; }
-
     }
-    [DataContract]
+
     public class Now
     {
-        [DataMember]
-
+        /// <summary>
+        /// 晴
+        /// </summary>
         public string text { get; set; }
-        [DataMember]
-
+        /// <summary>
+        /// 0
+        /// </summary>
         public string code { get; set; }
-        [DataMember]
-
+        /// <summary>
+        /// 15
+        /// </summary>
         public string temperature { get; set; }
-
+        /// <summary>
+        /// 14
+        /// </summary>
+        public string feels_like { get; set; }
+        /// <summary>
+        /// 1009
+        /// </summary>
+        public string pressure { get; set; }
+        /// <summary>
+        /// 62
+        /// </summary>
+        public string humidity { get; set; }
+        /// <summary>
+        /// 3.3
+        /// </summary>
+        public string visibility { get; set; }
+        /// <summary>
+        /// 东北
+        /// </summary>
+        public string wind_direction { get; set; }
+        /// <summary>
+        /// 42
+        /// </summary>
+        public string wind_direction_degree { get; set; }
+        /// <summary>
+        /// 6.48
+        /// </summary>
+        public string wind_speed { get; set; }
+        /// <summary>
+        /// 2
+        /// </summary>
+        public string wind_scale { get; set; }
+        /// <summary>
+        /// 0
+        /// </summary>
+        public string clouds { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        public string dew_point { get; set; }
     }
-    [DataContract]
+
     public class Results
     {
-        [DataMember]
-
+        /// <summary>
+        /// Location
+        /// </summary>
         public Location location { get; set; }
-        [DataMember]
-
+        /// <summary>
+        /// Now
+        /// </summary>
         public Now now { get; set; }
-        [DataMember]
-
+        /// <summary>
+        /// 2019-04-22T09:05:00+08:00
+        /// </summary>
         public string last_update { get; set; }
     }
-    [DataContract]
+
     public class Root
     {
-        [DataMember]
-
+        /// <summary>
+        /// Results
+        /// </summary>
         public List<Results> results { get; set; }
-    }*/
+    }
 }

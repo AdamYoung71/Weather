@@ -8,13 +8,13 @@ using System.Runtime.Serialization.Json;
 using System.Runtime.Serialization;
 using System.IO;
 using Windows.UI.Xaml.Controls;
-/*
+
 namespace LifeSuggestionAPI//六项生活指数API
 
 {
     class LifeSuggestionAPI
     {
-        public async static Task<Root> GetSuggestion(string city)
+        public async static Task<Root> getSuggestion(string city)
         {
             var location_cd = city;
             var http = new HttpClient();
@@ -528,4 +528,4 @@ public class Root
 
 
 }
-*/
+

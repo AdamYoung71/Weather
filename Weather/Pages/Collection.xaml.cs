@@ -27,10 +27,7 @@ namespace Weather
     public sealed partial class Collection : Page
     {
         public ObservableCollection<DailyWeather> collectionDailyWeathers = new ObservableCollection<DailyWeather>();
-
-
-
-
+        
         public Collection()
         {
             this.InitializeComponent();
@@ -72,9 +69,7 @@ namespace Weather
                 {
                     Title = "消息提示",
                     Content = "已取消收藏！",
-
                     PrimaryButtonText = "确定",
-
                     FullSizeDesired = false,
                 };
                 dialog.PrimaryButtonClick += (_s, _e) => { };
@@ -91,7 +86,7 @@ namespace Weather
                 DailyWeather a = e.ClickedItem as DailyWeather;
                 Pages.Parameters.cityName = a.date;
                 Pages.Parameters.previous = a.date;
-                Frame.Navigate(typeof(HomePage));
+                Frame.Navigate(typeof(HomePage),"fromCollection");
             }
             catch
             {

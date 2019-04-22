@@ -10,11 +10,13 @@ using Windows.Storage;
 
 namespace Weather.Pages
 {
+    //此文档为一些全局参数
     public class Parameters
     {
         public static string cityName = "成都";
         public static string previous = cityName;
         public static List<Boolean> signal = new List<bool>();
+
         public static void getCity(string s)
         {
             cityName = s;

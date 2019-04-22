@@ -2,12 +2,11 @@
     Name="homepage"
     x:Class="Weather.HomePage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:Weather"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d"
     xmlns:data="using:Weather.Models"
+    mc:Ignorable="d"
     Background="Transparent"
     >
 
@@ -30,7 +29,7 @@
                     <Button Content="收藏" Margin="0,8,0,0" Background="Transparent" Click="Button_Click"  />
                 </StackPanel>
 
-                <Border x:Name="width"/>
+                
                 <StackPanel Grid.Column="1" Grid.ColumnSpan="2">
                     <RelativePanel Height="200">
                         <TextBlock Name="cityNameText" 
@@ -48,7 +47,7 @@
                            Text="16°C"
                            RelativePanel.AlignHorizontalCenterWith="cityNameText"/>
                         <Image Name="mainIcon" Height="60"  RelativePanel.LeftOf="curTempText" Margin="0,28,10,0" Source="/Assets/Icons/white/0@2x.png"/>
-                        <TextBlock Name="mainDisc"  Text="晴" FontSize="30" RelativePanel.Below="curTempText" RelativePanel.AlignHorizontalCenterWithPanel="True" Foreground="White" Margin="-20,-10,0,0"/>
+                        <TextBlock Name="mainDisc"  Text="晴" FontSize="30" FontWeight="Bold" RelativePanel.Below="curTempText" RelativePanel.AlignHorizontalCenterWithPanel="True" Foreground="White" Margin="-20,-10,0,0"/>
                         <TextBlock Name="lastUpdatedText" 
                                    FontSize="12" 
                                    FontWeight="Bold" 
@@ -64,32 +63,7 @@
 
                 <StackPanel Grid.Row="1" Grid.Column="1" Margin="24" Grid.RowSpan="2" Grid.ColumnSpan="2">
                     <TextBlock RelativePanel.AlignLeftWithPanel="True" Text="详细信息" Style="{ThemeResource BodyTextBlockStyle}" Foreground="White"/>
-                    <StackPanel x:Name="detailStackPanel" Height="220" CornerRadius="20" Background="{StaticResource SystemControlAltMediumLowAcrylicElementMediumBrush}" Margin="0,10,0,0">
-                     <!--   <RelativePanel Margin="12" >
-
-                            <Image Name="feelsLikeIcon" Height="30" Width="30" Source="/Assets/Icons/others/thermometer.png"/>
-                            <TextBlock Name="feelsLikeText" FontSize="22" Foreground="White" Margin="40,0,0,0">体感温度</TextBlock>
-                            <TextBlock Name="feelsLiketempText" FontSize="22" Foreground="White" RelativePanel.AlignRightWithPanel="True" Text="16°C" Margin="0,0,24,0" FontWeight="Bold"/>
-
-                            <Image Name="pressureIcon" Height="30" Margin="0,30,0,0"  Source="/Assets/Icons/others/pressure.png" RelativePanel.Below = "feelsLikeIcon"/>
-                            <TextBlock Name="pressureText" FontSize="22" Foreground="White" RelativePanel.Below="feelsLikeText" RelativePanel.RightOf="pressureIcon" Margin="15,25,0,0">气压</TextBlock>
-                            <TextBlock Name="pressureNumText" FontSize="25" Foreground="White" Text="mb" RelativePanel.AlignRightWithPanel="True" RelativePanel.Below="feelsLiketempText" Margin="0,20,30,0" FontWeight="Bold"/>
-
-                            <Image Name="humidityIcon" Height="30" Source ="/Assets/Icons/others/humidity.png" RelativePanel.Below="pressureIcon" Margin="0,30,0,0"/>
-                            <TextBlock Name="humidityText"/>
-                            <TextBlock/>
-
-                            <Image/>
-                            <TextBlock/>
-                            <TextBlock/>
-
-
-                            <Image/>
-                            <TextBlock/>
-                            <TextBlock/>
-
-                        </RelativePanel>-->
-                        
+                    <StackPanel x:Name="detailStackPanel" Height="230" CornerRadius="20" Background="{StaticResource SystemControlAltMediumLowAcrylicElementMediumBrush}" Margin="0,10,0,0">
                         <ListView x:Name="myListView" ItemsSource="{x:Bind detailItems}" SelectionMode="None"  Margin="12" HorizontalAlignment="Stretch" ScrollViewer.VerticalScrollMode="Auto">
                             <ListView.ItemContainerStyle>
                                 <Style TargetType="ListViewItem">
@@ -99,7 +73,6 @@
                             <ListView.ItemTemplate>
                                 <DataTemplate x:DataType="data:Items">
                                     <Grid Name="listViewGrid"  Height="40" HorizontalAlignment="Stretch">
-
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition Width="Auto"/>
                                             <ColumnDefinition Width="4*"/>
@@ -110,18 +83,12 @@
                                         <TextBlock Name="feelsLikeText" FontSize="20" Foreground="White" Grid.Column="1" Grid.ColumnSpan="2" Text="{x:Bind text}" Margin="10,0,0,0"/>
                                         <TextBlock Name="feelsLiketempText" FontSize="22" Foreground="White" Grid.Column="3" Text="{x:Bind figure}" FontWeight="Bold" HorizontalAlignment="Right" Grid.ColumnSpan="2"/>
                                     </Grid>
-
-
-
-
-
                                 </DataTemplate>
                             </ListView.ItemTemplate>
                         </ListView>
-                        
                     </StackPanel>
                     <TextBlock RelativePanel.AlignLeftWithPanel="True" Text="生活指数" Style="{ThemeResource BodyTextBlockStyle}" Foreground="White" Margin="0,10,0,0"/>
-                    <StackPanel  Height="260" CornerRadius="20" Background="{StaticResource SystemControlAltMediumLowAcrylicElementMediumBrush}" Margin="0,10,0,0">
+                    <StackPanel  Height="270" CornerRadius="20" Background="{StaticResource SystemControlAltMediumLowAcrylicElementMediumBrush}" Margin="0,10,0,0">
                         <ListView x:Name="myListView2" ItemsSource="{x:Bind suggestionItems}" SelectionMode="None"  Margin="12" HorizontalAlignment="Stretch">
                             <ListView.ItemContainerStyle>
                                 <Style TargetType="ListViewItem">
@@ -131,7 +98,6 @@
                             <ListView.ItemTemplate>
                                 <DataTemplate x:DataType="data:Items">
                                     <Grid Name="listViewGrid"  Height="40" HorizontalAlignment="Stretch">
-
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition Width="Auto"/>
                                             <ColumnDefinition Width="4*"/>
@@ -147,7 +113,7 @@
                         </ListView>
                     </StackPanel>
                     <TextBlock RelativePanel.AlignLeftWithPanel="True" Text="空气质量" Style="{ThemeResource BodyTextBlockStyle}" Foreground="White" Margin="0,10,0,0"/>
-                    <StackPanel  Height="220" CornerRadius="20" Background="{StaticResource SystemControlAltMediumLowAcrylicElementMediumBrush}"  Margin="0,10,0,0">
+                    <StackPanel  Height="230" CornerRadius="20" Background="{StaticResource SystemControlAltMediumLowAcrylicElementMediumBrush}"  Margin="0,10,0,0">
                         <ListView x:Name="myListView3" ItemsSource="{x:Bind airItems}" SelectionMode="None"  Margin="12" HorizontalAlignment="Stretch">
                             <ListView.ItemContainerStyle>
                                 <Style TargetType="ListViewItem">
@@ -157,7 +123,6 @@
                             <ListView.ItemTemplate>
                                 <DataTemplate x:DataType="data:Items">
                                     <Grid Name="listViewGrid"  Height="40" HorizontalAlignment="Stretch">
-
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition Width="Auto"/>
                                             <ColumnDefinition Width="4*"/>
@@ -175,17 +140,15 @@
                 </StackPanel>
             </Grid>
         </PivotItem>
-        <PivotItem Header="Forcast">
-            
+        
+        <PivotItem Header="Forecast">
             <StackPanel>
                 <TextBlock Name="tomoText" Foreground="White" Text="三天天气预报" FontSize='20'/>
                 <GridView x:Name="mainDetailListView"
-                          ItemsSource="{x:Bind dailyWeathers}"
-                         
+                          ItemsSource="{x:Bind dailyWeathers}"                        
                           HorizontalAlignment="Left"
                           ScrollViewer.VerticalScrollBarVisibility="Hidden"
-                          SelectionMode="Extended"
-                          
+                          SelectionMode="Extended"                          
                           Margin="24">
                     <GridView.ItemTemplate>
                         <DataTemplate x:DataType="data:DailyWeather">
