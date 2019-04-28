@@ -15,8 +15,27 @@
         </Grid.RowDefinitions>
         <ScrollViewer>
             <StackPanel >
-                <TextBlock FontSize="30" Margin="24" Foreground="White">数据提供方</TextBlock>
-                <Image Name="providerIcon" Source="/Assets/logo-red-text-white-2x.png" Height="80" HorizontalAlignment="Left"/>
+                <TextBlock FontSize="30" Foreground="White" Margin="12">关于作者</TextBlock>
+                <StackPanel  Margin="12">
+                    <Image Source="/Assets/Icons/settingPage/uestcIcon.png" Height="50" Margin="24" HorizontalAlignment="Left"/>
+                    <StackPanel Orientation="Horizontal" Margin="12">
+                        <Image Source="/Assets/Icons/settingPage/Github.png" Height="50" Width="50" Margin="12"/>
+                        <TextBlock FontSize="24" Foreground="White" VerticalAlignment="Center">
+                            <Span xml:space="preserve"><Run>Github: </Run><Hyperlink NavigateUri="https://github.com/AdamYoung71/Weather">https://github.com/AdamYoung71/Weather</Hyperlink></Span>
+                        </TextBlock>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="12"> 
+                        <Image Source="/Assets/Icons/settingPage/homepage.png" Height="50" Width="50" Margin="12"/>
+                        <TextBlock FontSize="24" Foreground="White" VerticalAlignment="Center">
+                            <Span xml:space="preserve"><Run>主页： </Run><Hyperlink NavigateUri="https://adamyoung71.github.io/">https://adamyoung71.github.io/</Hyperlink></Span>
+                        </TextBlock>
+                    </StackPanel>
+                    <TextBlock FontSize="30" Margin="12" Foreground="White">数据提供方</TextBlock>
+                    <StackPanel Orientation="Horizontal">
+                        <Image Name="providerIcon" Source="/Assets/logo-red-text-white-2x.png" Height="50" HorizontalAlignment="Left" Margin="12"/>
+                        <TextBlock Foreground="White" VerticalAlignment="Center" FontSize="24">| © 北京心知科技有限公司 | 京ICP备16067076号</TextBlock>
+                    </StackPanel>
+                </StackPanel>
             </StackPanel>
         </ScrollViewer>
     </Grid>

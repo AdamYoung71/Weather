@@ -33,7 +33,7 @@ namespace Weather
             this.InitializeComponent();
             this.NavigationCacheMode = NavigationCacheMode.Enabled;
             collectionDetailListView.DataContext = collectionDailyWeathers;
-
+            collectionInit();           
         }
 
 
@@ -43,7 +43,10 @@ namespace Weather
         {
             if (Pages.Parameters.collections != null && Convert.ToString(e.Parameter) == "1")
             {
-                collectionDailyWeathers.Add(new DailyWeather() { date = Pages.Parameters.cityName, iconSource = new BitmapImage(new Uri(myImg.BaseUri, "/Assets/Icons/white/3@2x.png")), tempreture = "16°C", descrip = "多云" });
+                var myWeather = await MainAPI.MainAPI.getWeather(Pages.Parameters.cityName);     //实例化主要天气API
+                var weatherCode = "/Assets/Icons/white/" + Convert.ToString(myWeather.results[0].now.code) + "@2x.png";
+                collectionDailyWeathers.Add(new DailyWeather() { date = Pages.Parameters.cityName, iconSource = new BitmapImage(new Uri(myImg.BaseUri, weatherCode)), tempreture = myWeather.results[0].now.temperature, descrip = myWeather.results[0].now.text });
+
                 var dialog = new ContentDialog()    //消息框
                 {
                     Title = "消息提示",
@@ -63,7 +66,8 @@ namespace Weather
                 }
                 else
                 {
-                    collectionDailyWeathers.RemoveAt(index - 1);
+                   DailyWeather daily = collectionDailyWeathers.First(r => r.date == Pages.Parameters.cityName);
+                    collectionDailyWeathers.Remove(daily);
                 }
                 var dialog = new ContentDialog()    //消息框
                 {
@@ -90,6 +94,18 @@ namespace Weather
             }
             catch
             {
+
+            }
+        }
+
+        public async void collectionInit()
+        {
+            foreach (string t in Pages.Parameters.collections)
+            {
+                var myWeather = await MainAPI.MainAPI.getWeather(t);     //实例化主要天气API
+                var weatherCode = "/Assets/Icons/white/" + Convert.ToString(myWeather.results[0].now.code) + "@2x.png";
+                
+                collectionDailyWeathers.Add(new DailyWeather() { date = t, iconSource = new BitmapImage(new Uri(myImg.BaseUri, weatherCode)), tempreture =myWeather.results[0].now.temperature, descrip =myWeather.results[0].now.text });
 
             }
         }

@@ -10,8 +10,8 @@
  
     Background="{StaticResource SystemControlChromeMediumAcrylicWindowMediumBrush}">
 
-    
-    
+
+
     <Grid>
         <Grid.Background >
             <LinearGradientBrush StartPoint="1,0">

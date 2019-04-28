@@ -38,7 +38,7 @@ namespace Weather
         StorageFolder storageFolder = ApplicationData.Current.LocalFolder;
 
         ApplicationDataContainer localSettings = ApplicationData.Current.LocalSettings;
-        
+             
 
         public  HomePage()
         {
@@ -50,7 +50,9 @@ namespace Weather
             mainDetailListView.DataContext = dailyWeathers;
             myListView.DataContext = detailItems;
             myListView2.DataContext = suggestionItems;
-            myListView3.DataContext = airItems;  
+            myListView3.DataContext = airItems;
+
+           
         }
 
 
@@ -58,12 +60,9 @@ namespace Weather
         {
                 try
                 {
-                if(Convert.ToString(e.Parameter) != "fromCollection")
-                {
+                if(Convert.ToString(e.Parameter)!= "Collection")             
                     getCity();
-                }
-                   
-               
+                          
                 }
                 catch
                 {
@@ -181,7 +180,7 @@ namespace Weather
                 var dialog = new ContentDialog()    //消息框
                 {
                     Title = "消息提示",
-                    Content = "输入错误！",
+                    Content = "错误！",
                     PrimaryButtonText = "确定",
                     FullSizeDesired = false,
                 };
@@ -190,10 +189,6 @@ namespace Weather
                 await dialog.ShowAsync();
 
             }
-
-
-
-
         }
 
        
@@ -203,30 +198,21 @@ namespace Weather
             
             if (collectionIcon.Symbol == Symbol.SolidStar)
             {
-                //ArrayList al = new ArrayList(Pages.Parameters.collections);
-                //int index = al.Count;
-                // al.RemoveAt(index - 1);
-                Pages.Parameters.collections.Remove(Pages.Parameters.cityName);
-                //Pages.Parameters.collections.Remove(Pages.Parameters.cityName);
-                collectionIcon.Symbol = Symbol.OutlineStar;
-               
-
+                Pages.Parameters.collections.Remove(Pages.Parameters.cityName);  
+                collectionIcon.Symbol = Symbol.OutlineStar;            
                 Frame.Navigate(typeof(Collection),"0");
-                Frame.Navigate(typeof(HomePage),"fromCollection");
+                Frame.Navigate(typeof(HomePage),"Collection");
             }
-            else if(Pages.Parameters.cityName!= "err")
+            else if(Pages.Parameters.cityName != "err")
             {
                 Pages.Parameters.collections.Add(Pages.Parameters.cityName);
                 collectionIcon.Symbol = Symbol.SolidStar;
                 
                 Frame.Navigate(typeof(Collection), "1");
-                Frame.Navigate(typeof(HomePage), "fromCollection");
-
-                // localSettings.Values["Collections"] = Pages.Parameters.collections;
-
+                Frame.Navigate(typeof(HomePage), "Collection");               
             }
+            string settingString = string.Join(",", Pages.Parameters.collections.ToArray());
+            localSettings.Values["collectionSettings"] = settingString;
         }
-
-        
     }
 }

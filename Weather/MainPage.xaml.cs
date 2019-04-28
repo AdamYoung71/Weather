@@ -8,6 +8,7 @@ using System.Security.Cryptography;
 using Windows.ApplicationModel.Core;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.Storage;
 using Windows.System;
 using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
@@ -36,6 +37,15 @@ namespace Weather
             this.NavigationCacheMode = NavigationCacheMode.Enabled;
             var coreTitleBar = CoreApplication.GetCurrentView().TitleBar;
             coreTitleBar.ExtendViewIntoTitleBar = true;
+            ApplicationDataContainer localSettings = ApplicationData.Current.LocalSettings;
+
+            if (localSettings.Values["collectionSettings"] != null)
+            {
+                string localvalue = localSettings.Values["collectionSettings"] as string;
+                Pages.Parameters.collections = new List<string>(localvalue.Split(new string[] { "," }, StringSplitOptions.RemoveEmptyEntries));
+            }
+            //ocalSettings.Values["collectionSettings"] = null;
+            //Pages.Parameters.collections.Clear();
 
         }
 
@@ -219,7 +229,7 @@ namespace Weather
                 Pages.Parameters.cityName = cityName;
                 
 
-                ContentFrame.Navigate(typeof(HomePage),cityName);//折腾我好几天！
+                ContentFrame.Navigate(typeof(HomePage),"search");//折腾我好几天！
 
 
                 //尝试：更换图片背景
@@ -255,8 +265,8 @@ namespace Weather
 
         private void NavigationViewItem_Tapped(object sender, TappedRoutedEventArgs e)
         {
-           // string cityName = Pages.Parameters.cityName;
-            ContentFrame.Navigate(typeof(HomePage));
+          
+            ContentFrame.Navigate(typeof(HomePage),"refresh");
         }
     }
 }

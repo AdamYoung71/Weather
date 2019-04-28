@@ -193,6 +193,10 @@
     <Content Include="Assets\Icons\others\wet.png" />
     <Content Include="Assets\Icons\others\windsock.png" />
     <Content Include="Assets\Icons\others\wind_gauge.png" />
+    <Content Include="Assets\Icons\settingPage\college.png" />
+    <Content Include="Assets\Icons\settingPage\github.png" />
+    <Content Include="Assets\Icons\settingPage\homepage.png" />
+    <Content Include="Assets\Icons\settingPage\uestcIcon.png" />
     <Content Include="Assets\Icons\white\0%401x.png" />
     <Content Include="Assets\Icons\white\0%402x.png" />
     <Content Include="Assets\Icons\white\1%401x.png" />
@@ -352,6 +356,9 @@
     </PackageReference>
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
       <Version>6.2.8</Version>
+    </PackageReference>
+    <PackageReference Include="Microsoft.Toolkit.Uwp.Notifications">
+      <Version>5.1.1</Version>
     </PackageReference>
     <PackageReference Include="Newtonsoft.Json">
       <Version>12.0.1</Version>
