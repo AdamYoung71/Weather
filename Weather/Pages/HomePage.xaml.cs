@@ -96,7 +96,8 @@ namespace Weather
                 
 
                 //给页面上方的主要部分赋值
-                curTempText.Text = myWeather.results[0].now.temperature + "°C";
+                
+                curTempText.Text = Pages.Parameters.isCelcius == true? myWeather.results[0].now.temperature + "°C" : myWeather.results[0].now.temperature + "°F";
                 cityNameText.Text = cityName;
 
                 //添加对应天气的图片
@@ -112,7 +113,8 @@ namespace Weather
                 {
                     /******************获取主页下方的信息项*******************/
                     detailItems.Clear(); //先清空
-                    detailItems.Add(new Items() { icon = new BitmapImage(new Uri(mainIcon.BaseUri, "/Assets/Icons/others/thermometer.png")), figure = myWeather.results[0].now.feels_like + "°C", text = "体感温度" });
+                    string cORf = Pages.Parameters.isCelcius == true ? "°C" : "°F";
+                    detailItems.Add(new Items() { icon = new BitmapImage(new Uri(mainIcon.BaseUri, "/Assets/Icons/others/thermometer.png")), figure = myWeather.results[0].now.feels_like + cORf, text = "体感温度" });
                     detailItems.Add(new Items() { icon = new BitmapImage(new Uri(mainIcon.BaseUri, "/Assets/Icons/others/pressure.png")), figure = myWeather.results[0].now.pressure + "百帕", text = "气压" });
                     detailItems.Add(new Items() { icon = new BitmapImage(new Uri(mainIcon.BaseUri, "/Assets/Icons/others/humidity.png")), figure = myWeather.results[0].now.humidity + "%", text = "相对湿度" });
                     detailItems.Add(new Items() { icon = new BitmapImage(new Uri(mainIcon.BaseUri, "/Assets/Icons/others/windsock.png")), figure = myWeather.results[0].now.wind_direction, text = "风向" });
@@ -129,10 +131,18 @@ namespace Weather
                     airItems.Clear();
                     airItems.Add(new Items() { icon = new BitmapImage(new Uri(mainIcon.BaseUri, "/Assets/Icons/others/quality.png")), figure = myAir.results[0].air.city.quality, text = "空气质量" });
                     airItems.Add(new Items() { icon = new BitmapImage(new Uri(mainIcon.BaseUri, "/Assets/Icons/others/aqi.png")), figure = myAir.results[0].air.city.aqi, text = "AQI" });
-                    airItems.Add(new Items() { icon = new BitmapImage(new Uri(mainIcon.BaseUri, "/Assets/Icons/others/particles.png")), figure = myAir.results[0].air.city.pm25, text = "Pm2.5" });
+                    airItems.Add(new Items() { icon = new BitmapImage(new Uri(mainIcon.BaseUri, "/Assets/Icons/others/particles.png")), figure = myAir.results[0].air.city.pm25, text = "PM2.5" });
                     airItems.Add(new Items() { icon = new BitmapImage(new Uri(mainIcon.BaseUri, "/Assets/Icons/others/o3.png")), figure = myAir.results[0].air.city.o3, text = "臭氧" });
-                    airItems.Add(new Items() { icon = new BitmapImage(new Uri(mainIcon.BaseUri, "/Assets/Icons/others/dust.png")), figure = myAir.results[0].air.city.primary_pollutant, text = "首要污染物" });
+                    
 
+                    if(myAir.results[0].air.city.primary_pollutant == null)
+                    {
+                        airItems.Add(new Items() { icon = new BitmapImage(new Uri(mainIcon.BaseUri, "/Assets/Icons/others/dust.png")), figure = "无", text = "首要污染物" });
+                    }
+                    else
+                    {
+                        airItems.Add(new Items() { icon = new BitmapImage(new Uri(mainIcon.BaseUri, "/Assets/Icons/others/dust.png")), figure = myAir.results[0].air.city.primary_pollutant, text = "首要污染物" });
+                    }
                     /******************************************************/
 
 
@@ -142,9 +152,19 @@ namespace Weather
                     var code_3 = "/Assets/Icons/white/" + Convert.ToString(myForcast.results[0].data[3].code) + "@2x.png";
 
                     dailyWeathers.Clear();
-                    dailyWeathers.Add(new DailyWeather() { date = "明天", iconSource = new BitmapImage(new Uri(mainIcon.BaseUri, code_1)), tempreture = myForcast.results[0].data[1].temperature.Substring(0, 2) + "°C", descrip = myForcast.results[0].data[1].text });
-                    dailyWeathers.Add(new DailyWeather() { date = "后天", iconSource = new BitmapImage(new Uri(mainIcon.BaseUri, code_2)), tempreture = myForcast.results[0].data[2].temperature.Substring(0, 2) + "°C", descrip = myForcast.results[0].data[2].text });
-                    dailyWeathers.Add(new DailyWeather() { date = "三天后", iconSource = new BitmapImage(new Uri(mainIcon.BaseUri, code_3)), tempreture = myForcast.results[0].data[3].temperature.Substring(0, 2) + "°C", descrip = myForcast.results[0].data[3].text });
+                    if(Pages.Parameters.isCelcius == true)
+                    {
+                        dailyWeathers.Add(new DailyWeather() { date = "明天", iconSource = new BitmapImage(new Uri(mainIcon.BaseUri, code_1)), tempreture = myForcast.results[0].data[1].temperature.Substring(0, 2) + "°C", descrip = myForcast.results[0].data[1].text });
+                        dailyWeathers.Add(new DailyWeather() { date = "后天", iconSource = new BitmapImage(new Uri(mainIcon.BaseUri, code_2)), tempreture = myForcast.results[0].data[2].temperature.Substring(0, 2) + "°C", descrip = myForcast.results[0].data[2].text });
+                        dailyWeathers.Add(new DailyWeather() { date = "三天后", iconSource = new BitmapImage(new Uri(mainIcon.BaseUri, code_3)), tempreture = myForcast.results[0].data[3].temperature.Substring(0, 2) + "°C", descrip = myForcast.results[0].data[3].text });
+                    }
+                    else
+                    {
+                        dailyWeathers.Add(new DailyWeather() { date = "明天", iconSource = new BitmapImage(new Uri(mainIcon.BaseUri, code_1)), tempreture = myForcast.results[0].data[1].temperature.Substring(0, 2) + "°F", descrip = myForcast.results[0].data[1].text });
+                        dailyWeathers.Add(new DailyWeather() { date = "后天", iconSource = new BitmapImage(new Uri(mainIcon.BaseUri, code_2)), tempreture = myForcast.results[0].data[2].temperature.Substring(0, 2) + "°F", descrip = myForcast.results[0].data[2].text });
+                        dailyWeathers.Add(new DailyWeather() { date = "三天后", iconSource = new BitmapImage(new Uri(mainIcon.BaseUri, code_3)), tempreture = myForcast.results[0].data[3].temperature.Substring(0, 2) + "°F", descrip = myForcast.results[0].data[3].text });
+                    }
+                   
                 }
 
 

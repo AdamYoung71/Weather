@@ -26,5 +26,16 @@ namespace Weather
         {
             this.InitializeComponent();
         }
+
+        private void RadioButton_Checked(object sender, RoutedEventArgs e)
+        {
+            Pages.Parameters.isCelcius = true;
+        }
+
+        private void RadioButton_Checked_1(object sender, RoutedEventArgs e)
+        {
+            Pages.Parameters.isCelcius = false;
+        
+        }
     }
 }

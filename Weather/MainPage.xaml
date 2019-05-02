@@ -30,11 +30,7 @@
             <NavigationView.MenuItems>
                 <NavigationViewItem Tag="home" Icon="Home" Content="主页"/>
                 <NavigationViewItemSeparator/>
-                
-                <NavigationViewItem Tag="Collection" Content="收藏" Icon="OutlineStar">
-
-                </NavigationViewItem>
-
+                <NavigationViewItem Tag="Collection" Content="收藏" Icon="OutlineStar"/>
             </NavigationView.MenuItems>
             <NavigationView.PaneFooter>
                 <NavigationViewItem Icon="Refresh" Content="刷新" Tapped="NavigationViewItem_Tapped"/>

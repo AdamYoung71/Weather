@@ -18,10 +18,11 @@ namespace MainAPI
     {
         public async static Task<Root> getWeather(string city)//主函数，序列化API
         {
+            string cORf = Weather.Pages.Parameters.isCelcius==true ?"c":"f";
             var location_cd = city;
             var http = new HttpClient();
             //var response = await http.GetAsync("https://api.seniverse.com/v3/weather/now.json?key=9b7few3mmyrhzfp1&location=chengdu&language=zh-Hans&unit=c");
-            var response = await http.GetAsync("https://api.seniverse.com/v3/weather/now.json?key=SrcvbANXIm08Wx519&location=" + location_cd + "&language=zh-Hans&unit=c");
+            var response = await http.GetAsync("https://api.seniverse.com/v3/weather/now.json?key=SrcvbANXIm08Wx519&location=" + location_cd + "&language=zh-Hans&unit="+cORf);
             var result = await response.Content.ReadAsStringAsync();
             var serializer = new DataContractJsonSerializer(typeof(Root));
 

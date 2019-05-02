@@ -45,8 +45,9 @@ namespace Weather
             {
                 var myWeather = await MainAPI.MainAPI.getWeather(Pages.Parameters.cityName);     //实例化主要天气API
                 var weatherCode = "/Assets/Icons/white/" + Convert.ToString(myWeather.results[0].now.code) + "@2x.png";
-                collectionDailyWeathers.Add(new DailyWeather() { date = Pages.Parameters.cityName, iconSource = new BitmapImage(new Uri(myImg.BaseUri, weatherCode)), tempreture = myWeather.results[0].now.temperature, descrip = myWeather.results[0].now.text });
+                string cORf = Pages.Parameters.isCelcius == true ? "°C" : "°F";
 
+                collectionDailyWeathers.Add(new DailyWeather() { date = Pages.Parameters.cityName, iconSource = new BitmapImage(new Uri(myImg.BaseUri, weatherCode)), tempreture = myWeather.results[0].now.temperature+cORf, descrip = myWeather.results[0].now.text });
                 var dialog = new ContentDialog()    //消息框
                 {
                     Title = "消息提示",
@@ -104,8 +105,8 @@ namespace Weather
             {
                 var myWeather = await MainAPI.MainAPI.getWeather(t);     //实例化主要天气API
                 var weatherCode = "/Assets/Icons/white/" + Convert.ToString(myWeather.results[0].now.code) + "@2x.png";
-                
-                collectionDailyWeathers.Add(new DailyWeather() { date = t, iconSource = new BitmapImage(new Uri(myImg.BaseUri, weatherCode)), tempreture =myWeather.results[0].now.temperature, descrip =myWeather.results[0].now.text });
+                string cORf = Pages.Parameters.isCelcius == true ? "°C" : "°F";
+                collectionDailyWeathers.Add(new DailyWeather() { date = t, iconSource = new BitmapImage(new Uri(myImg.BaseUri, weatherCode)), tempreture =myWeather.results[0].now.temperature+cORf, descrip =myWeather.results[0].now.text });
 
             }
         }
