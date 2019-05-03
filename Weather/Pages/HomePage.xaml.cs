@@ -19,6 +19,7 @@ using Weather.Models;
 using System.Collections.ObjectModel;
 using Windows.Storage;
 using System.Collections;
+using Windows.UI.Notifications;
 
 // https://go.microsoft.com/fwlink/?LinkId=234238 上介绍了“空白页”项模板
 
@@ -35,8 +36,6 @@ namespace Weather
         ObservableCollection<Items> suggestionItems = new ObservableCollection<Items>();
         ObservableCollection<Items> airItems = new ObservableCollection<Items>();
  
-        StorageFolder storageFolder = ApplicationData.Current.LocalFolder;
-
         ApplicationDataContainer localSettings = ApplicationData.Current.LocalSettings;
              
 
@@ -78,6 +77,11 @@ namespace Weather
         {
             try
             {
+               
+
+
+
+
                /*************实例化API******************/
                 string cityName = Pages.Parameters.cityName;
                 var myWeather = await MainAPI.MainAPI.getWeather(cityName);     //实例化主要天气API
@@ -91,6 +95,7 @@ namespace Weather
                     Lon = 360 + Lon;
                 }
                 var myCurrentWeather = await ProCurrentWeather.ProCurrentWeather.GetProCurrentWeather(Lon, Lat);//实例化高级当前天气API
+
                 var myForcast = await ProForecast.ProForecast.GetProForecast(Lon, Lat);
                 var myAir = await AirQulity.AirQuality.getAir(cityName);
                 
@@ -167,10 +172,15 @@ namespace Weather
                    
                 }
 
+                //更新磁贴
+                var tileXML = TileUpdateManager.GetTemplateContent(TileTemplateType.TileSquare150x150Block);
+                var tileAttributes = tileXML.GetElementsByTagName("text");
+                tileAttributes[0].AppendChild(tileXML.CreateTextNode(myWeather.results[0].now.temperature+"°"));
+                tileAttributes[1].AppendChild(tileXML.CreateTextNode(mainDisc.Text));
+                var tileNotification = new TileNotification(tileXML);
+                TileUpdateManager.CreateTileUpdaterForApplication().Update(tileNotification);
 
 
-
-               
 
 
 
