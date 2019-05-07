@@ -31,6 +31,6 @@
 
 
 
-4. 设置（未完成）
+4. 设置
 
-   ![setting](assets/setting.png)
+   ![1557243201716](assets/1557243201716.png)
