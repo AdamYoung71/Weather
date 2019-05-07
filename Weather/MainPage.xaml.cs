@@ -44,12 +44,7 @@ namespace Weather
                 string localvalue = localSettings.Values["collectionSettings"] as string; //读取收藏的信息
                 Pages.Parameters.collections = new List<string>(localvalue.Split(new string[] { "," }, StringSplitOptions.RemoveEmptyEntries)); //将string类型的设置存入List内
             }
-            //ocalSettings.Values["collectionSettings"] = null;
-            //Pages.Parameters.collections.Clear();
-
         }
-
-
 
         private void ContentFrame_NavigationFailed(object sender, NavigationFailedEventArgs e)
         {
@@ -70,10 +65,7 @@ namespace Weather
             ContentFrame.Navigated += On_Navigated;
 
             // 默认情况下不加载页面，故设置为加载Homepage
-            NavView.SelectedItem = NavView.MenuItems[0];
-            // If navigation occurs on SelectionChanged, this isn't needed.
-            // Because we use ItemInvoked to navigate, we need to call Navigate
-            // here to load the home page.
+            NavView.SelectedItem = NavView.MenuItems[0];          
             NavView_Navigate("home", new EntranceNavigationTransitionInfo());
 
             // 为键盘回退添加keyboard accelerator
@@ -103,10 +95,7 @@ namespace Weather
                 NavView_Navigate(navItemTag, args.RecommendedNavigationTransitionInfo);
             }
         }
-
-        /* NavView_SelectionChanged is not used in this example, but is shown for completeness.
-             You will typically handle either ItemInvoked or SelectionChanged to perform navigation,
-             but not both. */
+        
              //选项改变，则导航到选中页面
         private void NavView_SelectionChanged(NavigationView sender, NavigationViewSelectionChangedEventArgs args)
         {
@@ -142,7 +131,7 @@ namespace Weather
             // 只在被选择的页面没有加载时导航
             if (!(_page is null) && !Type.Equals(preNavPageType, _page))
             {
-                ContentFrame.Navigate(_page, null, transitionInfo);
+                ContentFrame.Navigate(_page, "init", transitionInfo);
             }
         }
 
@@ -163,7 +152,7 @@ namespace Weather
             if (!ContentFrame.CanGoBack)
                 return false;
 
-            // Don't go back if the nav pane is overlayed.导航栏与界面重合时不进行回退
+            // 导航栏与界面重合时不进行回退
             if (NavView.IsPaneOpen &&
                 (NavView.DisplayMode == NavigationViewDisplayMode.Compact ||
                  NavView.DisplayMode == NavigationViewDisplayMode.Minimal))
@@ -179,7 +168,7 @@ namespace Weather
 
             if (ContentFrame.SourcePageType == typeof(SettingsPage))
             {
-                // SettingsItem is not part of NavView.MenuItems, and doesn't have a Tag.设置页面不属于navView的item所以没有Tag，只能单独处理
+                // 设置页面不属于navView的item所以没有Tag，只能单独处理
                 NavView.SelectedItem = (NavigationViewItem)NavView.SettingsItem;
                
             }
@@ -217,7 +206,7 @@ namespace Weather
             {
                 string cityName = args.QueryText;
                 Pages.Parameters.cityName = cityName;  //设置全局参数              
-                ContentFrame.Navigate(typeof(HomePage),"search"); //折腾我好几天！              
+                ContentFrame.Navigate(typeof(HomePage),"search");         
                 Pages.Parameters.previous = Pages.Parameters.cityName;
             }
 

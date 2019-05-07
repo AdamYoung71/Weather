@@ -1,24 +1,11 @@
-﻿using LLQ;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
+﻿using System;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Media.Imaging;
 using Windows.UI.Xaml.Navigation;
-using static Weather.Pages.Events;
 using Weather.Models;
 using System.Collections.ObjectModel;
 using Windows.Storage;
-using System.Collections;
 using Windows.UI.Notifications;
 
 // https://go.microsoft.com/fwlink/?LinkId=234238 上介绍了“空白页”项模板
@@ -31,12 +18,12 @@ namespace Weather
     public sealed partial class HomePage : Page
     {
         //声明每个模板所使用的集合
-        ObservableCollection<DailyWeather> dailyWeathers = new ObservableCollection<DailyWeather>();
-        ObservableCollection<Items> detailItems = new ObservableCollection<Items>();
-        ObservableCollection<Items> suggestionItems = new ObservableCollection<Items>();
-        ObservableCollection<Items> airItems = new ObservableCollection<Items>();
+        ObservableCollection<DailyWeather> dailyWeathers = new ObservableCollection<DailyWeather>(); //三天天气预报   
+        ObservableCollection<Items> detailItems = new ObservableCollection<Items>(); //详细信息
+        ObservableCollection<Items> suggestionItems = new ObservableCollection<Items>(); //生活指数
+        ObservableCollection<Items> airItems = new ObservableCollection<Items>(); //空气质量
  
-        ApplicationDataContainer localSettings = ApplicationData.Current.LocalSettings;
+        ApplicationDataContainer localSettings = ApplicationData.Current.LocalSettings; //声明本地设置
              
 
         public  HomePage()
@@ -50,25 +37,17 @@ namespace Weather
             myListView.DataContext = detailItems;
             myListView2.DataContext = suggestionItems;
             myListView3.DataContext = airItems;
-
-           
         }
 
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-                try
-                {
-                if(Convert.ToString(e.Parameter)!= "Collection")             
+            try
+            {
+                if (Convert.ToString(e.Parameter) == "fromCollection"|| Convert.ToString(e.Parameter) == "search"|| Convert.ToString(e.Parameter) == "refresh"||Convert.ToString(e.Parameter) =="init")
                     getCity();
-                          
-                }
-                catch
-                {
-                    
-                }
-            
-
+            }
+            catch { }
             base.OnNavigatedTo(e);
           
         }
@@ -77,11 +56,6 @@ namespace Weather
         {
             try
             {
-               
-
-
-
-
                /*************实例化API******************/
                 string cityName = Pages.Parameters.cityName;
                 var myWeather = await MainAPI.MainAPI.getWeather(cityName);     //实例化主要天气API
@@ -90,12 +64,11 @@ namespace Weather
                 string[] Locations = myLocation.geocodes[0].location.Split(",");        //将用逗号隔开的经纬度分割分别存入。
                 double Lat = Convert.ToDouble(Locations[0]);
                 double Lon = Convert.ToDouble(Locations[1]);
-                if (Lon < 0)
+                if (Lon < 0) //API的返回数据有负数，转换为正数
                 {
                     Lon = 360 + Lon;
                 }
                 var myCurrentWeather = await ProCurrentWeather.ProCurrentWeather.GetProCurrentWeather(Lon, Lat);//实例化高级当前天气API
-
                 var myForcast = await ProForecast.ProForecast.GetProForecast(Lon, Lat);
                 var myAir = await AirQulity.AirQuality.getAir(cityName);
                 
@@ -108,7 +81,6 @@ namespace Weather
                 //添加对应天气的图片
                 var weatherCode = "/Assets/Icons/white/" + Convert.ToString(myWeather.results[0].now.code) + "@2x.png";
                 mainIcon.Source = new BitmapImage(new Uri(mainIcon.BaseUri, weatherCode));
-
                 string[] lastUpdate = myWeather.results[0].last_update.Split("T");
                 lastUpdatedText.Text = "最后更新：" + lastUpdate[1].Substring(0, 5);
                 mainDisc.Text = myWeather.results[0].now.text;
@@ -173,12 +145,12 @@ namespace Weather
                 }
 
                 //更新磁贴
-                var tileXML = TileUpdateManager.GetTemplateContent(TileTemplateType.TileSquare150x150Block);
+                var tileXML = TileUpdateManager.GetTemplateContent(TileTemplateType.TileSquare150x150Block); //选择模板
                 var tileAttributes = tileXML.GetElementsByTagName("text");
-                tileAttributes[0].AppendChild(tileXML.CreateTextNode(myWeather.results[0].now.temperature+"°"));
+                tileAttributes[0].AppendChild(tileXML.CreateTextNode(myWeather.results[0].now.temperature+"°")); //绑定内容
                 tileAttributes[1].AppendChild(tileXML.CreateTextNode(mainDisc.Text));
                 var tileNotification = new TileNotification(tileXML);
-                TileUpdateManager.CreateTileUpdaterForApplication().Update(tileNotification);
+                TileUpdateManager.CreateTileUpdaterForApplication().Update(tileNotification); //更新
 
 
 
@@ -194,8 +166,6 @@ namespace Weather
                     collectionIcon.Symbol = Symbol.OutlineStar;
                 }
 
-                
-               
             }
             catch
             {
@@ -206,24 +176,23 @@ namespace Weather
                 cityNameText.Text = "Error";
                 curTempText.Text = "--°C";
                 tomoText.Text = " ";
+                mainDisc.Text = " ";
+                    var dialog = new ContentDialog()    //消息框
+                    {
+                        Title = "消息提示",
+                        Content = "未找到！",
+                        PrimaryButtonText = "确定",
+                        FullSizeDesired = false,
+                    };
 
-                var dialog = new ContentDialog()    //消息框
-                {
-                    Title = "消息提示",
-                    Content = "错误！",
-                    PrimaryButtonText = "确定",
-                    FullSizeDesired = false,
-                };
-
-                dialog.PrimaryButtonClick += (_s, _e) => { };
-                await dialog.ShowAsync();
-
+                    dialog.PrimaryButtonClick += (_s, _e) => { };
+                    await dialog.ShowAsync();
             }
         }
 
        
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void Button_Click(object sender, RoutedEventArgs e) //收藏功能
         {
             
             if (collectionIcon.Symbol == Symbol.SolidStar)
@@ -242,7 +211,7 @@ namespace Weather
                 Frame.Navigate(typeof(HomePage), "Collection");               
             }
             string settingString = string.Join(",", Pages.Parameters.collections.ToArray());
-            localSettings.Values["collectionSettings"] = settingString;
+            localSettings.Values["collectionSettings"] = settingString; //写入本地设置
         }
     }
 }

@@ -16,12 +16,14 @@ namespace ProForecast//高级天气预报API（以经纬度为参数，精度1km
         public async static Task<Root> GetProForecast(double lat, double lon)
         {
             //类型转换（接口需要字符串）
+            string cORf = Weather.Pages.Parameters.isCelcius == true ? "c" : "f";
+
             string latitude = Convert.ToString(lat);
             string longitude = Convert.ToString(lon);
             string language = "zh-Hans";
             var http = new HttpClient();
             //var response = await http.GetAsync("https://api.seniverse.com/v3/pro/weather/grid/hourly3h.json?key=9b7few3mmyrhzfp1&location=39.865927:116.359805");
-            var response = await http.GetAsync("https://api.seniverse.com/v3/pro/weather/grid/hourly3h.json?key=SrcvbANXIm08Wx519&location=" + latitude + ":" + longitude+"&language="+language);
+            var response = await http.GetAsync("https://api.seniverse.com/v3/pro/weather/grid/hourly3h.json?key=SrcvbANXIm08Wx519&location=" + latitude + ":" + longitude+"&language="+language+"&unit="+cORf);
             var result = await response.Content.ReadAsStringAsync();
             var serializer = new DataContractJsonSerializer(typeof(Root));
 

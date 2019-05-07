@@ -15,10 +15,12 @@ namespace Forcast
     {
         public async static Task<Root> getForcast(string city)
         {
+            string cORf = Weather.Pages.Parameters.isCelcius == true ? "c" : "f";
+
             var location_cd = city;
             var http = new HttpClient();
-            //var response = await http.GetAsync("https://api.seniverse.com/v3/weather/hourly3h.json?key=SrcvbANXIm08Wx519&location=beijing");
-            var response = await http.GetAsync("https://api.seniverse.com/v3/weather/hourly3h.json?key=SrcvbANXIm08Wx519&location=" + location_cd);
+            //var response = await http.GetAsync("https://api.seniverse.com/v3/weather/hourly3h.json?key=SrcvbANXIm08Wx519&location=beijing&unit=f");
+            var response = await http.GetAsync("https://api.seniverse.com/v3/weather/hourly3h.json?key=SrcvbANXIm08Wx519&location=" + location_cd +"&unit="+cORf);
             var result = await response.Content.ReadAsStringAsync();
             var serializer = new DataContractJsonSerializer(typeof(Root));
 

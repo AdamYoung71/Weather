@@ -25,17 +25,20 @@ namespace Weather
         public SettingsPage()
         {
             this.InitializeComponent();
+            this.NavigationCacheMode = NavigationCacheMode.Enabled;
+            cButton.IsChecked = true;
         }
 
         private void RadioButton_Checked(object sender, RoutedEventArgs e)
         {
             Pages.Parameters.isCelcius = true;
+            cButton.IsChecked = true;
         }
 
         private void RadioButton_Checked_1(object sender, RoutedEventArgs e)
         {
             Pages.Parameters.isCelcius = false;
-        
+            fButton.IsChecked = true;
         }
     }
 }

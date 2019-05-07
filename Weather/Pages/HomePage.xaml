@@ -149,13 +149,13 @@
                     <ColumnDefinition Width="3*"/>
                 </Grid.ColumnDefinitions>    
                
-                <StackPanel Grid.Column="1">
+                <StackPanel Grid.Column="1" HorizontalAlignment="Center">
                     <TextBlock Name="tomoText" Foreground="White" Text="三天天气预报" FontSize='20'/>
                     <GridView x:Name="mainDetailListView"
                           ItemsSource="{x:Bind dailyWeathers}"                        
                           HorizontalAlignment="Stretch"
                           ScrollViewer.VerticalScrollBarVisibility="Hidden"
-                          SelectionMode="Extended"                          
+                          SelectionMode="None"                      
                           Margin="24">
                         <GridView.ItemTemplate>
                             <DataTemplate x:DataType="data:DailyWeather">

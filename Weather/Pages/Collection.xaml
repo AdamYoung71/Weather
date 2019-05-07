@@ -10,7 +10,12 @@
     Background="Transparent">
 
     <Grid>
-        <StackPanel Margin="24">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="3*"/>
+            <ColumnDefinition Width="8*"/>
+            <ColumnDefinition Width="3*"/>
+        </Grid.ColumnDefinitions>
+        <StackPanel Margin="24" Grid.Column="1" HorizontalAlignment="Center">
             
             <Image Name="myImg" Width="50" Source="/Assets/Icons/white/0@1x.png" Visibility="Collapsed"/>
             <GridView x:Name="collectionDetailListView"
@@ -23,8 +28,8 @@
                           Margin="24">
                 <GridView.ItemTemplate>
                     <DataTemplate x:DataType="data:DailyWeather">
-                        <StackPanel Height="180" Width="180">
-                            <TextBlock x:Name="dateText" Height="40" Width="100" Text="{x:Bind date}" Foreground="White" HorizontalAlignment="Center"/>
+                        <StackPanel Height="180" Width="180" HorizontalAlignment="Stretch">
+                            <TextBlock x:Name="dateText" Height="40" Width="100" Text="{x:Bind date}" Foreground="White" HorizontalAlignment="Center" FontWeight="Bold"/>
                             <Image Source="{x:Bind iconSource}" Height="50"/>
                             <TextBlock x:Name="tempText" Text="{x:Bind tempreture}" FontSize="30" Foreground="White" HorizontalAlignment="Center"/>
                             <TextBlock x:Name="descripText" FontSize="30" Foreground="White" Text="{x:Bind descrip}" HorizontalAlignment="Center"/>
